@@ -127,10 +127,10 @@
         }
         return flag;
     }
-    // 非PC端跳转到移动端主页
-    if(!IsPC()){
-        window.location.href = "mobile.php";
-    }
+    // // 非PC端跳转到移动端主页
+    // if(!IsPC()){
+    //     window.location.href = "mobile.php";
+    // }
 
 </script>
 </body>
