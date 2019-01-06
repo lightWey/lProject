@@ -9,6 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('front.home')->with('config', Config::first());
+        return view('front.home');
+    }
+
+    public function media()
+    {
+        return view('front.media');
     }
 }

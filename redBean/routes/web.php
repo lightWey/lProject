@@ -11,6 +11,8 @@
 |
 */
 Route::get('/', 'HomeController@index');
+Route::get('/media', 'HomeController@media');
+
 Route::get('/admin/home', 'Common\IndexController@index')->middleware('auth')->name('home');
 
 Route::namespace('Common')->name('admin.')->group(function () {

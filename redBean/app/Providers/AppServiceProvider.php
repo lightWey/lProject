@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $config = Config::first();
+        config(['app.name'=>$config->name]);
+        config(['app.url'=>$config->url]);
+        config(['site'=>$config]);
     }
 
     /**
@@ -24,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }
