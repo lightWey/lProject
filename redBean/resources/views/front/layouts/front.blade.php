@@ -22,10 +22,10 @@
         <nav class="header-nav">
             <a href="/" @if ($flag == 'home') class="color" @endif>广告投放</a>
             <a href="/media" @if ($flag == 'media') class="color" @endif>媒体变现</a>
-            <a href="javascript:void(0)">文档中心</a>
+            <a href="javascript:alert('请联系管理员索取')">文档中心</a>
             <a href="/about" @if ($flag == 'about') class="color" @endif>关于我们</a>
-            <a href="login.php.html">登陆</a>
-            <a href="register.php.html">注册</a>
+            <a href="/login">登陆</a>
+            <a href="javascript:alert('请联系管理员注册')">注册</a>
         </nav>
     </div>
 </header>
