@@ -46,14 +46,14 @@
     <div class="success-case">
         <div class="success-case-wraper">
             <h1 class="bt wow fadeInDown" data-wow-duration=".3" data-wow-delay=".1s" data-wow-offset="50">成功案例</h1>
-            <p class="smallbt wow fadeInDown" data-wow-duration=".3" data-wow-delay=".3s" data-wow-offset="50">超1000家行业佼佼者优先选择洛米~</p>
+            <p class="smallbt wow fadeInDown" data-wow-duration=".3" data-wow-delay=".3s" data-wow-offset="50">超1000家行业佼佼者优先选择红豆~</p>
             <div class="case-content">
                 <!-- Swiper -->
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <dl>
-                                <dt class="wow fadeInLeft ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s"><img src="template/gw/img/Advertisement1.png"></dt>
+                                <dt class="wow fadeInLeft ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s"><img src="{{ asset('front/img/Advertisement1.png') }}"></dt>
                                 <dd class="wow fadeInRight ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s">
                                     <h2>游戏行业</h2>
                                     <h3>综合运用媒体流量为XXX导入优质用户</h3>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="swiper-slide">
                             <dl>
-                                <dt class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s"><img src="template/gw/img/Advertisement2.png"></dt>
+                                <dt class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s"><img src="{{ asset('front/img/Advertisement2.png') }}"></dt>
                                 <dd class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s">
                                     <h2>电商平台</h2>
                                     <h3>多素材组合投放高效成交燃爆“电商剁手节”</h3>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="swiper-slide">
                             <dl>
-                                <dt class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s"><img src="template/gw/img/Advertisement4.jpg"></dt>
+                                <dt class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s"><img src="{{ asset('front/img/Advertisement4.jpg') }}"></dt>
                                 <dd class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.3s" swiper-animate-delay="0.1s">
                                     <h2>金融行业</h2>
                                     <h3>定向投放北京、上海、广州等一线城市</h3>

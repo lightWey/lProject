@@ -11,7 +11,8 @@
 |
 */
 Route::get('/', 'HomeController@index');
-Route::get('/media', 'HomeController@media');
+Route::get('media', 'HomeController@media');
+Route::get('about', 'HomeController@about');
 
 Route::get('/admin/home', 'Common\IndexController@index')->middleware('auth')->name('home');
 
