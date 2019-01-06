@@ -1,0 +1,78 @@
+.about-banner{
+	width: 100%;
+}
+.about-banner img{
+	width: 100%;
+}
+.content{
+			margin: 60px 0;
+		}
+		.aboutMe{
+			width:1080px;
+			margin: 20px auto;
+		}
+		.aboutMe-left{
+			width: 49.7%;
+			display:inline-block;
+			padding: 0 19px;	
+		}
+		.aboutMe .aboutMe-txt{
+			line-height: 25px;
+			text-indent: 2em;
+			color: #777;
+			font-size:14px;
+			margin-bottom: 10px;
+		}
+		.aboutMe-left .bt{
+			text-align: center;
+		    font-size: 26px;
+		    color: #333;
+		    margin-bottom: 10px;
+		}
+		.aboutMe-right{
+			width: 49.7%;
+			height:420px;
+			float:right;
+			background:url("../img/map.png") no-repeat right center;
+			background-size:cover;
+		}
+		.callMe{
+			width: 100%;
+			margin: 20px auto;
+		}
+		.callMe .bt{
+			text-align: center;
+		    font-size: 26px;
+		    color: #333;
+		    margin-bottom: 30px;	
+		}
+		.callMe .callMe-txt{
+			line-height: 25px;
+			color: #fff;
+			font-size:14px;
+			margin-bottom: 10px;
+		}
+		.callMe .callMe-left{
+			width: 50%;
+		    height: 397px;
+		    float: left;
+		    background-color: #0098c5;
+		}
+		.callMe .callMe-left .main{
+			display: block;
+		    margin: 0 auto;
+		    width: 454px;
+		    padding-top: 67px;
+		}
+		.callMe .callMe-right{
+			width: 50%;
+			height:397px;
+    		float: left;
+    		background:url("../img/MBQ.png") no-repeat right center;
+			background-size:cover;
+		}
+		.callMe:after{
+			content: "";
+			display: block;
+			clear: both;
+		}

@@ -1,0 +1,118 @@
+body {
+  background-color: #faf9f8;
+}
+.documt-content {
+  padding: 100px 0;
+  width: 1080px;
+  margin: 0 auto;
+  background-color: #fff;
+  position: relative;
+}
+.documt-content .nav-left {
+  width: 285px;
+  height: 100%;
+  border: 1px solid #efefef;
+  position: fixed;
+  left: 0;
+  top: 100px;
+}
+.documt-content .nav-left h1 {
+  height: 50px;
+  line-height: 50px;
+  color: #00bdff;
+  text-align: center;
+  border-bottom: 1px solid #efefef;
+}
+.documt-content .nav-left a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #efefef;
+  background-color: #faf9f8;
+  font-size: 15px;
+  color: #757770;
+  padding-left: 68px;
+}
+.documt-content .nav-left a:nth-child(3),
+.documt-content .nav-left a:nth-child(4),
+.documt-content .nav-left a:nth-child(9),
+.documt-content .nav-left a:nth-child(10) {
+  padding-left: 85px;
+}
+.documt-content .nav-left a:hover {
+  background-color: #fff;
+}
+.documt-content .nav-left a.color {
+  background-color: #fff;
+}
+.documt-content .cont-right {
+  padding-left: 300px;
+}
+.documt-content .cont-right .wd {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 25px;
+}
+.documt-content .cont-right .big-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ece3e3;
+  padding-bottom: 10px;
+}
+.documt-content .cont-right .small-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.documt-content .cont-right .cont-txt {
+  font-size: 14px;
+  color: #757770;
+  margin-bottom: 10px;
+}
+.documt-content .cont-right .cont-txt a {
+  color: #00bdff;
+  text-decoration: underline;
+}
+.documt-content .cont-right .pre {
+  overflow-x: auto;
+  background-color: #faf9f8;
+  color: #75779c;
+  font-size: 14px;
+  text-align: left;
+  padding: 10px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
+}
+.documt-content .cont-right .pre::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+.documt-content .cont-right .pre code {
+  display: block;
+}
+.documt-content .cont-right .tablelist {
+  margin-bottom: 10px;
+}
+.documt-content .cont-right .tablelist tbody {
+  font-size: 14px;
+  text-align: center;
+  color: #757770;
+}
+.documt-content .cont-right .tablelist tbody th {
+  color: #333;
+}
+.documt-content .cont-right .tablelist tbody tr {
+  height: 25px;
+}
+.documt-content .cont-right .tablelist tbody tr td,
+.documt-content .cont-right .tablelist tbody tr th {
+  text-align: center;
+  padding: 6px 13px;
+  border: 1px solid #ccc;
+}
+.documt-content .cont-right .tablelist tbody tr:nth-child(odd) {
+  background-color: #faf9f8;
+}
+.documt-content .cont-right .tablelist tbody tr:nth-child(1) {
+  background-color: #e2e2e2;
+}

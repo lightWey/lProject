@@ -1,0 +1,181 @@
+/* CSS reset */
+html{color:#000;background:#FFF;font-family:"仿宋",Arial,'FangSong';}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,strong{padding:0;margin:0;font-family:"仿宋",Arial,'FangSong';}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+a{text-decoration:none; color:inherit; outline:none;}/*此处待添加默认链接颜色*/
+var,em,strong{font-style:normal;}
+address,caption,cite,code,dfn,em,th,var,optgroup{font-style:inherit;font-weight:inherit;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+legend{color:#000;}
+input,button,textarea,select,optgroup,option{font-family:"微软雅黑",inherit; font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,button,textarea,select{*font-size:100%;}
+body{-webkit-text-size-adjust:none;}
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.clearfix:after{cotent:'\200B';display: block;height: 0;clear: both;overflow: hidden;}
+.clearfix {*zoom: 1}
+.margin-bottom-20{margin-bottom: 20px;}
+.font12{font-size: 12px;}
+
+/* 公共 */
+* {margin: 0;padding: 0;-webkit-box-sizing: border-box;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);-moz-box-sizing: border-box;-moz-tap-highlight-color: rgba(0, 0, 0, 0);box-sizing: border-box;tap-highlight-color: rgba(0, 0, 0, 0);-webkit-text-size-adjust:none;-moz-text-size-adjust:none;text-size-adjust:none;}
+
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+/*去除chrome input输入框黄色背景*/
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0 1000px white inset; 
+}
+a, input, select, textarea {
+    outline: none;
+}
+img {
+    max-width: 100%;
+}
+
+/* 滚动条按钮基本样式 */
+scrollbar thumb{
+-moz-appearance: none !important;
+background-color: #323534 !important;
+border-radius: 0px !important;
+}
+/* 滚动条的滑轨背景颜色 */
+::-webkit-scrollbar-track {
+  background-color: #f1f0ee;
+}
+     
+/* 滑块颜色 */
+::-webkit-scrollbar-thumb {
+    background-color: #323534;
+} 
+		 
+/* 滑轨两头的监听按钮颜色 */
+/* ::-webkit-scrollbar-button {
+    background-color: #7c2929;
+} */
+ 
+/* 横向滚动条和纵向滚动条相交处尖角的颜色 */
+/* ::-webkit-scrollbar-corner {
+    background-color: black;
+}  */
+		 
+body {
+    scrollbar-face-color: #ff6a37;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height:8px;
+}
+::-webkit-scrollbar-track {
+ /*  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+ /*  border-radius: 4px; */
+}
+::-webkit-scrollbar-thumb {
+ /*  border-radius: 4px; */
+ /*  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
+}
+/* Scrollable element */
+.some-element::webkit-scrollbar {
+}
+.header {
+  width: 100%;
+  height: 74px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: 0 0;
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.header .header-wraper {
+  padding: 0 10%;
+}
+.header .header-wraper .header-logo {
+  width: 104px;
+  height: 35px;
+  float: left;
+  padding-top: 3px;
+}
+.header .header-wraper .header-nav {
+  height: 74px;
+  line-height: 64px;
+  font-size: 14px;
+  color: #9b9b9b;
+  float: right;
+}
+.header .header-wraper .header-nav a {
+  margin-right: 32px;
+}
+.header .header-wraper .header-nav a.color {
+  color: #00bdff;
+}
+.header.mini {
+  height: 4pc;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.footer {
+  padding: 30px 10%;
+  position: relative;
+  background-color: #f7f6f5;
+  color: #777;
+  z-index: 100;
+  box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.1);
+}
+.footer .footer-top {
+  padding-bottom: 50px;
+}
+.footer .footer-top .top-list .roll_wrap {
+  height: 120px;
+  overflow: hidden;
+}
+.footer .footer-top:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.footer .top-list {
+  float: left;
+  margin: 0 3.5%;
+  margin-bottom: 20px;
+}
+.footer .top-list h1 {
+  color: #333;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.footer .top-list ul li {
+  line-height: 30px;
+  font-size: 15px;
+}
+.footer .footer-bottom {
+  padding-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid #cdcbcb;
+}
+.footer .footer-bottom:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.footer .footer-bottom .bottom-left {
+  margin-left: 5%;
+  float: left;
+  width: 25%;
+}
+.footer .footer-bottom .bottom-left a {
+  margin-right: 3%;
+}
+.footer .footer-bottom .bottom-right {
+  float: right;
+}
