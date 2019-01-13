@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdStatsTable extends Migration
+class CreateContentConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAdStatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ad_stats', function (Blueprint $table) {
+        Schema::create('content_configs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ad_id')->unsigned();
-            $table->unsignedDecimal('cons',8,4);
-            $table->text('referer')->nullable(true);
-            $table->string('ip')->default('');
+            $table->unsignedTinyInteger('type')->default(0);
+            $table->string('name');
+            $table->string('value');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateAdStatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ad_stats');
+        Schema::dropIfExists('content_configs');
     }
 }

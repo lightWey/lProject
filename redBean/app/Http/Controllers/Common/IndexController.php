@@ -8,8 +8,10 @@
 
 namespace App\Http\Controllers\Common;
 
+use App\Ad;
 use App\Http\Controllers\Controller;
 use App\User;
+use http\Env\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -54,5 +56,18 @@ class IndexController extends Controller
         $request->session()->invalidate();
 
         return redirect('/home');
+    }
+
+    public function url(Ad $ad, Request $request)
+    {
+
+        //print_r($request->server->get('HTTP_REFERER'));exit();
+
+        $ad->stat()->create([
+            'type' => 2,
+            'referer' => $request->server->get('HTTP_REFERER') ?: '',
+            'ip' => $request->getClientIp(),
+            'cons' => $ad->once
+        ]);
     }
 }

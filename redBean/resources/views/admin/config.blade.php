@@ -67,7 +67,7 @@
                 </div>
             </form>
         </div>
-        <!--SEO配置-->
+        <!--SEO配置-->ß
         <div class="layui-tab-item">
             <form class="layui-form" style="width: 90%;padding-top: 20px;">
                 <div class="layui-form-item">
@@ -91,127 +91,6 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn layui-btn-normal" lay-submit lay-filter="seoInfo">立即提交</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--邮箱配置-->
-        <div class="layui-tab-item">
-            <form class="layui-form"  style="width: 90%;padding-top: 20px;">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱模式：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="static" value="1" title="SMTP函数发送" checked="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">服务器：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="smtp" placeholder="请输入邮件服务器" autocomplete="off" class="layui-input" value="smtp.163.com">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">端口：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="port" placeholder="请输入邮件发送端口" autocomplete="off" class="layui-input" value="25">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">发件人：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="email" placeholder="请输入发件人地址" autocomplete="off" class="layui-input" value="admin@abc3210.com">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">名称：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="name" placeholder="请输入发件人名称" autocomplete="off" class="layui-input" value="mfan管理员">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">用户名：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" value="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="emailInfo">立即提交</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--评论设置-->
-        <div class="layui-tab-item">
-            <form class="layui-form" style="width: 90%;padding-top: 20px;">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">评论审核：</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="audit" lay-skin="primary" title="开启" checked="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">评论间隔：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="time" placeholder="请输入评论时间间隔" autocomplete="off" class="layui-input" value="60">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">秒</div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="commentInfo">立即提交</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--合作伙伴设置-->
-        <div class="layui-tab-item">
-            <form class="layui-form" style="width: 90%;padding-top: 20px;">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">评论审核：</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="audit" lay-skin="primary" title="开启" checked="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">评论间隔：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="time" placeholder="请输入评论时间间隔" autocomplete="off" class="layui-input" value="60">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">秒</div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="cooperationInfo">立即提交</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--客服设置-->
-        <div class="layui-tab-item">
-            <form class="layui-form" style="width: 90%;padding-top: 20px;">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">评论审核：</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="audit" lay-skin="primary" title="开启" checked="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">评论间隔：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="time" placeholder="请输入评论时间间隔" autocomplete="off" class="layui-input" value="60">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">秒</div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="csInfo">立即提交</button>
                     </div>
                 </div>
             </form>

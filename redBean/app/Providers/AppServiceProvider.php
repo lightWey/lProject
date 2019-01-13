@@ -17,9 +17,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         $config = Config::first();
-        config(['app.name'=>$config->name]);
-        config(['app.url'=>$config->url]);
-        config(['site'=>$config]);
+        if ($config) {
+            config(['app.name'=>$config->name]);
+            config(['app.url'=>$config->url]);
+            config(['site'=>$config]);
+        }
     }
 
     /**

@@ -13,6 +13,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('media', 'HomeController@media');
 Route::get('about', 'HomeController@about');
+Route::get('url/{ad}', 'Common\IndexController@url');
 
 Route::get('/admin/home', 'Common\IndexController@index')->middleware('auth')->name('home');
 
@@ -43,6 +44,7 @@ Route::name('admin.')->middleware('auth')->group(function () {
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::resource('config','ConfigController');
     Route::post('config/upload', 'ConfigController@upload')->name('config.upload');
+    Route::resource('c-config','ContentConfigController');
 });
 
 //Auth::routes();

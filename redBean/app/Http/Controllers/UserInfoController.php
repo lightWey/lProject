@@ -35,7 +35,7 @@ class UserInfoController extends Controller
 
     public function index()
     {
-        $users = User::where('type',0)->with('info')->get();
+        $users = User::where('type',0)->with('info')->paginate(15);
         return view('admin.userList')->with('users', $users);
     }
 

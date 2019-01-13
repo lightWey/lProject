@@ -6,7 +6,7 @@ $once = [0.02,0.2];
 $factory->define(App\Ad::class, function (Faker $faker) use($once) {
     return [
         'status' => $faker->numberBetween(0,1),
-        'type' => $faker->numberBetween(0,1),
+        'type' => $faker->numberBetween(1,2),
         'once' => $once[array_rand($once, 1)],
         'used' =>$faker->numberBetween(1,99),
         'url' => $faker->url,

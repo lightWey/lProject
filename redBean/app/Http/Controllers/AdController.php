@@ -10,7 +10,7 @@ class AdController extends Controller
 {
     public function index()
     {
-        $type=['CPM', 'CPC'];
+        $type=[1 => 'CPM', 2 => 'CPC'];
         $ads = Ad::whereHas('user', function ($query) {
             $query->where('type', 0);
         })->with('user')->paginate(15);

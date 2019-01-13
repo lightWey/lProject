@@ -9,10 +9,15 @@ use Illuminate\Http\Request;
 
 class AdStatController extends Controller
 {
-    public function index()
+    protected $type = [
+        1 => '展示',
+        2 => '点击'
+    ];
+
+    public function index(Request $request)
     {
         $stats = AdStat::with('ad')->paginate(15);
-        return view('admin.adStatList')->with('stats', $stats);
+        return view('admin.adStatList')->with('stats', $stats)->with('type', $this->type);
     }
 
     public function storage(Request $request)
@@ -35,10 +40,6 @@ class AdStatController extends Controller
     public function add()
     {
         $ads = Ad::all();
-        $type = [
-            1 => '展示',
-            2 => '点击'
-        ];
-        return view('admin.adStatAdd')->with('ads', $ads)->with('type', $type);
+        return view('admin.adStatAdd')->with('ads', $ads)->with('type', $this->type);
     }
 }

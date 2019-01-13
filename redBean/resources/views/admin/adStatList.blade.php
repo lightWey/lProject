@@ -19,6 +19,13 @@
                 <div class="layui-inline tool-btn">
                     <button class="layui-btn layui-btn-small layui-btn-normal addBtn" data-title="添加记录" data-url="{{ route('admin.ad.stat.add') }}"><i class="layui-icon">&#xe654;</i></button>
                 </div>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" id="ctime" placeholder="yyyy-MM-dd" lay-key="1">
+                </div>
+                <div class="layui-inline">
+                    <input type="text" name="etime" id="etime"  lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
+                </div>
+                <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
             </div>
         </form>
         <div class="layui-form" id="table-list">
@@ -34,18 +41,16 @@
                     <col>
                     <col>
                     <col>
-                    <col>
                 </colgroup>
                 <thead>
                 <tr>
                     <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
-                    <th>计数</th>
                     <th class="hidden-xs">记录ID</th>
                     <th class="hidden-xs">广告ID</th>
                     <th>广告名称</th>
                     <th>类型</th>
-                    <th>数量</th>
-                    <th>消耗金额</th>
+                    <th>IP</th>
+                    <th>来源</th>
                     <th class="hidden-xs">产生时间</th>
                 </tr>
                 </thead>
@@ -53,13 +58,12 @@
                 @foreach($stats as $stat)
                 <tr>
                     <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></td>
-                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $stat->id }}</td>
                     <td class="hidden-xs">{{ $stat->ad->id }}</td>
                     <td class="hidden-xs">{{ $stat->ad->name }}</td>
-                    <td class="hidden-xs">{{ $stat->type }}</td>
-                    <td class="hidden-xs">{{ $stat->num }}</td>
-                    <td class="hidden-xs">{{ $stat->cons }}</td>
+                    <td class="hidden-xs">{{ $type[$stat->type] }}</td>
+                    <td class="hidden-xs">{{ $stat->ip }}</td>
+                    <td class="hidden-xs">{{ $stat->referer }}</td>
                     <td class="hidden-xs">{{ $stat->created_at }}</td>
                 </tr>
                 @endforeach
@@ -73,6 +77,29 @@
 </div>
 <script src="{{asset('admin/layui/layui.js')}}" type="text/javascript" charset="utf-8"></script>
 <script src="{{asset('admin/js/common.js')}}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['form','jquery', 'laydate', 'layer'], function() {
+        var form = layui.form(),
+            layer = layui.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate;
+
+        form.render();
+
+        $('#ctime').click(function () {
+
+            laydate({
+                elem: $('#ctime')[0],
+                format: 'YYYY-MM-DD hh:mm:ss',
+                max: '2099-06-16 23:59:59',
+                choose: function (datas) {
+                    endSearch.min = datas;
+                    endSearch.start = datas
+                }
+            });
+        })
+    })
+</script>
 </body>
 
 </html>
