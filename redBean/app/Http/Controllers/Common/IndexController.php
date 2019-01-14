@@ -14,6 +14,7 @@ use App\User;
 use http\Env\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -28,6 +29,15 @@ class IndexController extends Controller
     {
         $data = new \stdClass();
         $data->userCount = User::where('type', '=', 0)->count();
+
+        $data->adCount = Ad::count();
+        $data->adStatCount = Ad::count();
+
+//        $aa = User::select(DB::raw('count(*) ct'),DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d") tt'))
+//            ->groupBy(DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d")'))->get();
+
+
+
         return view('admin.welcome')->with('data', $data);
     }
 
@@ -55,7 +65,7 @@ class IndexController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     public function url(Ad $ad, Request $request)

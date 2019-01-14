@@ -36,6 +36,7 @@ Route::name('admin.')->middleware('auth')->group(function () {
     Route::post('ad/add', 'AdController@storage')->name('ad.add');
     Route::get('ad/{ad}/detail', 'AdController@detail')->name('ad.detail');
     Route::post('ad/status', 'AdController@status')->name('ad.status');
+    Route::get('admin/ad/stat', 'AdController@stat')->name('ad.stat2');
 
     Route::get('ad/stat', 'AdStatController@index')->name('ad.stat');
     Route::get('ad/stat/add', 'AdStatController@add')->name('ad.stat.add');
@@ -51,5 +52,5 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
 //Auth::routes();
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
-
+Route::get('user-login', 'Auth\LoginController@showLoginForm')->name('user-login');
 

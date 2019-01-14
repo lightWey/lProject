@@ -48,14 +48,14 @@
                     <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></td>
                     <td>{{ $config->id }}</td>
                     <td>{{ $config->name }}</td>
-                    <td>{{ $config->status }}</td>
+                    <td>{{ $status[$config->status] }}</td>
                     <td>{{ $type[$config->type] }}</td>
                     <td>{{ $config->total }}</td>
                     <td>{{ $config->ctime }}</td>
                     <td>
                         <div class="layui-inline">
                             <button class="layui-btn layui-btn-small layui-btn-normal go-btn" data-url="{{ route('admin.schema.show', ['id'=>$config->id]) }}"><i class="layui-icon">&#xe642;</i></button>
-                            <button class="layui-btn layui-btn-small layui-btn-danger real-del-btn" data-id="{{ $config->id }}" data-url="{{ route('admin.schema.destroy', 1) }}" data-csrf="{{ csrf_token() }}"><i class="layui-icon">&#xe640;</i></button>
+                            {{--<button class="layui-btn layui-btn-small layui-btn-danger real-del-btn" data-id="{{ $config->id }}" data-url="{{ route('admin.schema.destroy', 1) }}" data-csrf="{{ csrf_token() }}"><i class="layui-icon">&#xe640;</i></button>--}}
                         </div>
                     </td>
                 </tr>

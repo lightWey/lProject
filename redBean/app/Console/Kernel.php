@@ -31,6 +31,10 @@ class Kernel extends ConsoleKernel
 //                  ->hourly();
         $schedule->call(function () {
             $adSchema = AdSchema::where('status', 1)->first();
+            if (empty($adSchema)) {
+                return false;
+            }
+
             $sctime = strtotime($adSchema->ctime);
             $setime = strtotime($adSchema->etime);
 

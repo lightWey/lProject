@@ -32,8 +32,8 @@
                                 <span class="iconfont">&#xe602;</span>
                             </div>
                             <div class="right-text-con">
-                                <p class="name">文章数</p>
-                                <p><span class="color-blue">189</span>数据<span class="iconfont">&#xe628;</span></p>
+                                <p class="name">广告数</p>
+                                <p><span class="color-blue">{{ $data->adCount }}</span>数据<span class="iconfont">&#xe628;</span></p>
                             </div>
                         </a>
                     </li>
@@ -43,8 +43,8 @@
                                 <span class="iconfont">&#xe605;</span>
                             </div>
                             <div class="right-text-con">
-                                <p class="name">评论数</p>
-                                <p><span class="color-green">221</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                <p class="name">记录数</p>
+                                <p><span class="color-green">{{ $data->adStatCount }}</span>数据<span class="iconfont">&#xe60f;</span></p>
                             </div>
                         </a>
                     </li>
@@ -89,55 +89,31 @@
         <div class="welcome-edge col-lg-3">
             <!--最新留言-->
             <div class="panel panel-default comment-panel">
-                <div class="panel-header">最新留言</div>
+                <div class="panel-header">最新公告</div>
                 <div class="panel-body">
                     <div class="commentbox">
                         <ul class="commentList">
                             <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
                                 <div class="comment-main">
                                     <header class="comment-header">
-                                        <div class="comment-meta"><a class="comment-author" href="#">慕枫</a> 评论于
-                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
+                                        <div class="comment-meta"><a class="comment-author" href="#">管理员</a> 发表于
+                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2018-12-30 15:20</time>
                                         </div>
                                     </header>
                                     <div class="comment-body">
-                                        <p><a href="#">@某人</a> 系统真不错！！！</p>
+                                        <p>房间公告</p>
                                     </div>
                                 </div>
                             </li>
                             <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
                                 <div class="comment-main">
                                     <header class="comment-header">
-                                        <div class="comment-meta"><a class="comment-author" href="#">慕枫</a> 评论于
-                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
+                                        <div class="comment-meta"><a class="comment-author" href="#">管理员</a> 发表于于
+                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2019-01-01 15:20</time>
                                         </div>
                                     </header>
                                     <div class="comment-body">
-                                        <p><a href="#">@某人</a> 系统真不错！！！</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
-                                <div class="comment-main">
-                                    <header class="comment-header">
-                                        <div class="comment-meta"><a class="comment-author" href="#">慕枫</a> 评论于
-                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
-                                        </div>
-                                    </header>
-                                    <div class="comment-body">
-                                        <p><a href="#">@某人</a> 系统真不错！！！</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
-                                <div class="comment-main">
-                                    <header class="comment-header">
-                                        <div class="comment-meta"><a class="comment-author" href="#">慕枫</a> 评论于
-                                            <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
-                                        </div>
-                                    </header>
-                                    <div class="comment-body">
-                                        <p><a href="#">@某人</a> 系统真不错！！！</p>
+                                        <p>元旦快乐，普天同庆</p>
                                     </div>
                                 </div>
                             </li>
@@ -152,7 +128,7 @@
             <div class="panel panel-default contact-panel">
                 <div class="panel-header">联系我们</div>
                 <div class="panel-body">
-                    <p>QQ：1465465646</p>
+                    <p>QQ：243065761</p>
                     <p>E-mail:4565564@qq.com</p>
                 </div>
             </div>

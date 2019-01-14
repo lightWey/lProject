@@ -16,20 +16,6 @@
         <div class="m-logo">
         </div>
         <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
-            <li class="layui-nav-item layui-nav-itemed">
-                <a href="javascript:;"><i class="iconfont">&#xe607;</i>菜单管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-url="menu1.html" data-id='1' data-text="后台菜单"><span class="l-line"></span>后台菜单</a></dd>
-                    <dd><a href="javascript:;" data-url="menu2.html" data-id='2' data-text="前台菜单"><span class="l-line"></span>前台菜单</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe608;</i>内容管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-url="article-list.html" data-id='3' data-text="文章管理"><span class="l-line"></span>文章管理</a></dd>
-                    <dd><a href="javascript:;" data-url="danye-list.html" data-id='9' data-text="单页管理"><span class="l-line"></span>单页管理</a></dd>
-                </dl>
-            </li>
             <li class="layui-nav-item">
                 <a href="javascript:;" data-url="{{ route('admin.user.list') }}" data-id='7' data-text="广告主管理"><i class="iconfont">&#xe606;</i>广告主管理</a>
             </li>
@@ -38,13 +24,6 @@
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;" data-url="{{ route('admin.ad.stat') }}" data-id='9' data-text="数据统计"><i class="iconfont">&#xe608;</i>数据统计</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;"><i class="iconfont">&#xe608;</i>数据统计</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-url="danye-list.html" data-id='10' data-text="统计数据"><span class="l-line"></span>数据统计</a></dd>
-                    <dd><a href="javascript:;" data-url="{{ route('admin.ad.stat') }}" data-id='9' data-text="详细记录"><span class="l-line"></span>详细记录</a></dd>
-                </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;" data-url="{{ route('admin.config.index') }}" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
@@ -67,7 +46,7 @@
                 </a>
             </div>
             <ul class="layui-nav" lay-filter="rightNav">
-                <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
                 <li class="layui-nav-item">
                     <a href="javascript:;" data-url="{{ route('admin.info.modify') }}" data-id='5' data-text="个人信息">{{ Auth::user()->name }}</a>
                 </li>

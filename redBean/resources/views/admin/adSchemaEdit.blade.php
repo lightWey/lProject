@@ -45,7 +45,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">方式：</label>
             <div class="layui-input-block">
-                <select name="random" lay-verify="required">
+                <select name="random" lay-verify="required" lay-filter="random">
                     <option value=""></option>
                     @foreach ($random as $k => $v)
                         <option @if ($config->random == $k) selected @endif value="{{ $k }}">{{ $v }}</option>
@@ -56,13 +56,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">结束时间：</label>
             <div class="layui-input-block">
-                <input type="text" id="etime" value="{{ $config->ctime }}" name="etime" required lay-verify="required" placeholder="请选择结束时间" autocomplete="off" class="layui-input">
+                <input type="text" id="etime" value="{{ $config->etime }}" name="etime" required lay-verify="required" placeholder="请选择结束时间" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" id="mm" @if ($config->random != 1) style="display: none" @endif>
+            <label class="layui-form-label" id="num">每秒次数：</label>
+            <div class="layui-input-block">
+                <input type="text" value="@if ($config->total) {{ $config->total/(strtotime($config->etime) - strtotime($config->ctime)) }} @endif " name="mm" required lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">数量：</label>
+            <label class="layui-form-label" id="num">总数量：</label>
             <div class="layui-input-block">
-                <input type="text" value="{{ $config->total }}" name="total" required lay-verify="required" placeholder="请输入总量" autocomplete="off" class="layui-input">
+                <input type="text" value="{{ $config->total }}" name="total" required lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -89,6 +95,23 @@
             $ = layui.jquery,
             laydate = layui.laydate;
 
+        form.render();
+
+        function ctime()
+        {
+            var ctime = $('#ctime').val(),etime = $('#etime').val(),mm = $('input[name="mm"]').val();
+            if (ctime && etime && mm) {
+                var date1 = Date.parse(new Date(ctime));
+                var date2 = Date.parse(new Date(etime));
+                $('input[name="total"]').val((date2-date1)/1000 * mm);
+            }
+
+        }
+
+        $('input[name="mm"]').keyup(function () {
+           ctime();
+        });
+
         $('#ctime').click(function () {
             laydate({
                 elem: $('#ctime')[0],
@@ -97,8 +120,7 @@
                 min: laydate.now(),
                 max: laydate.now(15),
                 choose: function (datas) {
-                    endSearch.min = datas;
-                    endSearch.start = datas
+                    ctime();
                 }
             });
         })
@@ -111,16 +133,26 @@
                 min: laydate.now(),
                 max: laydate.now(15),
                 choose: function (datas) {
-                    endSearch.min = datas;
-                    endSearch.start = datas
+                    ctime();
                 }
             });
         })
-        form.render();
+
+        form.on('select(random)', function(data){
+            var random = $(data.elem);
+            if (random.val() == 1) {
+                $('#mm').show();
+                $('input[name="total"]').addClass('layui-disabled').attr("disabled",true);
+            } else {
+                $('#mm').hide();
+                $('input[name="total"]').removeClass('layui-disabled').attr("disabled",false);
+            }
+        });
+
         @if (empty($config->id))
         //监听提交
         form.on('submit(formDemo)', function(data) {
-            var json_data=(data.field)
+            var json_data=(data.field);
             $.ajax({
                 async:false,
                 type: "POST",

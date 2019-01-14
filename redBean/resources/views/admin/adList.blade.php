@@ -44,7 +44,6 @@
                     <th>链接</th>
                     <th>计费方法</th>
                     <th>单价</th>
-                    <th>已使用</th>
                     <th>用户</th>
                     <th class="hidden-xs">创建时间</th>
                     <th>状态</th>
@@ -60,7 +59,6 @@
                     <td class="hidden-xs">{{ $ad->url }}</td>
                     <td class="hidden-xs">{{ $type[$ad->type] }}</td>
                     <td class="hidden-xs">{{ $ad->once }}</td>
-                    <td class="hidden-xs">{{ $ad->used }}</td>
                     <td class="hidden-xs">{{ $ad->user->name }}</td>
                     <td class="hidden-xs">{{ $ad->created_at }}</td>
                     <td>

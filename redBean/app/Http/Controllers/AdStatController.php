@@ -22,6 +22,8 @@ class AdStatController extends Controller
 
         if ($request->input('etime')) {
             $ad->where('created_at', '<=', $request->input('etime'));
+        } else {
+            $ad->where('created_at', '<=', date('Y-m-d H:i:s'));
         }
         $stats = $ad->paginate(15);
         $stats = $stats->appends($request->all());

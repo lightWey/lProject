@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class AdSchemaController extends Controller
 {
     protected $status = [
-        '失败','成功'
+        '失败','普通','成功'
     ];
     protected $type=[
         1 => '浏览',
@@ -80,50 +80,12 @@ class AdSchemaController extends Controller
             return ['msg' => '失败'];
         }
 
+        if ($data['random'] == 1) {
+            $data['total'] = (strtotime($data['etime']) - strtotime($data['ctime'])) * $data['total'];
+        }
+
         $config = new AdSchema($data);
         $config->save();
-
-        $sctime = strtotime($data['ctime']);
-        $setime = strtotime($data['etime']);
-        $cha = $setime - $sctime;
-        $test = 0;
-
-        if ($data['random'] == 1) {
-            $int = ceil($data['total'] / $cha);
-            while (true) {
-                if ($test >= $data['total']) {
-                    break;
-                }
-
-                $config->stat()->save(factory(AdStat::class, $int)->make([
-                    'ad_id'=>$ad->id,
-                    'cons' => $ad->cons,
-                    'type' => $data['type'],
-                    'created_at' => '',
-                    'updated_at' => '',
-                ]));
-
-                $test+=$int;
-            }
-        } else {
-            while (true) {
-                if ($test >= $data['total']) {
-                    break;
-                }
-
-                $time = date('Y-m-d H:i:s', mt_rand($sctime, $setime));
-                $config->stat()->save(factory(AdStat::class, 1)->make([
-                    'ad_id'=>$ad->id,
-                    'cons' => $ad->cons,
-                    'type' => $data['type'],
-                    'created_at' => $time,
-                    'updated_at' => $time,
-                    'real' => 0
-                ]));
-
-                $test+=1;
-            }
-        }
         return ['msg'=>'成功'];
     }
 

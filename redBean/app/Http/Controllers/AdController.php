@@ -13,7 +13,9 @@ class AdController extends Controller
         $type=[1 => 'CPM', 2 => 'CPC'];
         $ads = Ad::whereHas('user', function ($query) {
             $query->where('type', 0);
-        })->with('user')->paginate(15);
+        })->with('user')->withCount(['stat'=>function ($query) {
+            $query->where('created_at', '<=', date('Y-m-d H:i:s'));
+        }])->paginate(15);
         return view('admin.adList')->with('ads', $ads)->with('type', $type);
     }
 
@@ -61,6 +63,6 @@ class AdController extends Controller
 
     public function stat(Request $request)
     {
-
+        return 123;
     }
 }
