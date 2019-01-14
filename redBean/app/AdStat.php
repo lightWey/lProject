@@ -11,4 +11,10 @@ class AdStat extends Model
     {
         return $this->belongsTo(Ad::class);
     }
+
+    public function schema()
+    {
+        return $this->belongsTo(AdSchema::class);
+    }
+
 }

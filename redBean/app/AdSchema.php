@@ -4,22 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ad extends Model
+class AdSchema extends Model
 {
     protected $guarded = [];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function stat()
     {
         return $this->hasMany(AdStat::class);
     }
 
-    public function schema()
+    public function ad()
     {
-        return $this->hasOne(AdSchema::class);
+        return $this->belongsTo(Ad::class);
     }
 }

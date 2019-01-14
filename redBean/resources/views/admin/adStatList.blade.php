@@ -20,10 +20,10 @@
                     <button class="layui-btn layui-btn-small layui-btn-normal addBtn" data-title="添加记录" data-url="{{ route('admin.ad.stat.add') }}"><i class="layui-icon">&#xe654;</i></button>
                 </div>
                 <div class="layui-inline">
-                    <input type="text" class="layui-input" id="ctime" placeholder="yyyy-MM-dd" lay-key="1">
+                    <input type="text" autocomplete="off" name="ctime" class="layui-input" lay-verify="date" value="{{ request()->input('ctime') }}" id="ctime" placeholder="开始时间">
                 </div>
                 <div class="layui-inline">
-                    <input type="text" name="etime" id="etime"  lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
+                    <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
                 </div>
                 <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
             </div>
@@ -87,11 +87,22 @@
         form.render();
 
         $('#ctime').click(function () {
-
             laydate({
                 elem: $('#ctime')[0],
-                format: 'YYYY-MM-DD hh:mm:ss',
-                max: '2099-06-16 23:59:59',
+                format: 'YYYY-MM-DD',
+                max: laydate.now(),
+                choose: function (datas) {
+                    endSearch.min = datas;
+                    endSearch.start = datas
+                }
+            });
+        })
+
+        $('#etime').click(function () {
+            laydate({
+                elem: $('#etime')[0],
+                format: 'YYYY-MM-DD',
+                max: laydate.now(+1),
                 choose: function (datas) {
                     endSearch.min = datas;
                     endSearch.start = datas

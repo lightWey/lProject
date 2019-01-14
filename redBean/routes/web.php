@@ -45,6 +45,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::resource('config','ConfigController');
     Route::post('config/upload', 'ConfigController@upload')->name('config.upload');
     Route::resource('c-config','ContentConfigController');
+    Route::resource('schema', 'AdSchemaController');
 });
 
 //Auth::routes();

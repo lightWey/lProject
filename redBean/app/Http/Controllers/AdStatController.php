@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\AdStat;
-use App\User;
 use Illuminate\Http\Request;
 
 class AdStatController extends Controller
@@ -16,7 +15,16 @@ class AdStatController extends Controller
 
     public function index(Request $request)
     {
-        $stats = AdStat::with('ad')->paginate(15);
+        $ad = AdStat::with('ad');
+        if ($request->input('ctime')) {
+            $ad->where('created_at', '>=', $request->input('ctime'));
+        }
+
+        if ($request->input('etime')) {
+            $ad->where('created_at', '<=', $request->input('etime'));
+        }
+        $stats = $ad->paginate(15);
+        $stats = $stats->appends($request->all());
         return view('admin.adStatList')->with('stats', $stats)->with('type', $this->type);
     }
 

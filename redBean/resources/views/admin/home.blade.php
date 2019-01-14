@@ -52,6 +52,9 @@
             <li class="layui-nav-item">
                 <a href="javascript:;" data-url="{{ route('admin.c-config.index') }}" data-id="10" data-text="客服管理"><i class="iconfont">&#xe600;</i>客服管理</a>
             </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" data-url="{{ route('admin.schema.index') }}" data-id="11" data-text="调度管理"><i class="iconfont">&#xe60d;</i>调度管理</a>
+            </li>
         </ul>
     </div>
     <!--右侧内容-->

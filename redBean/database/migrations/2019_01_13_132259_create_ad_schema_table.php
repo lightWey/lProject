@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdStatsTable extends Migration
+class CreateAdSchemaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateAdStatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ad_stats', function (Blueprint $table) {
+        Schema::create('ad_schemas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ad_id')->unsigned();
-            $table->integer('ad_schema_id')->default(0)->unsigned();
-            $table->unsignedDecimal('cons',8,4);
-            $table->text('referer')->nullable(true);
-            $table->string('ip')->default('');
+            $table->string('name');
+            $table->tinyInteger('status')->default(1);
+            $table->integer('total');
+            $table->tinyInteger('random');
+            $table->unsignedTinyInteger('type');
             $table->timestamps();
+            $table->timestamp('ctime')->nullable(true);
+            $table->timestamp('etime')->nullable(true);
         });
     }
 
@@ -31,6 +34,6 @@ class CreateAdStatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ad_stats');
+        Schema::dropIfExists('ad_schemas');
     }
 }
