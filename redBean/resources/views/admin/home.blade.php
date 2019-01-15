@@ -16,24 +16,23 @@
         <div class="m-logo">
         </div>
         <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="{{ route('admin.user.list') }}" data-id='7' data-text="广告主管理"><i class="iconfont">&#xe606;</i>广告主管理</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="{{ route('admin.ad.list') }}" data-id='8' data-text="广告管理"><i class="iconfont">&#xe608;</i>广告管理</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="{{ route('admin.ad.stat') }}" data-id='9' data-text="数据统计"><i class="iconfont">&#xe608;</i>数据统计</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="{{ route('admin.config.index') }}" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="{{ route('admin.c-config.index') }}" data-id="10" data-text="客服管理"><i class="iconfont">&#xe600;</i>客服管理</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;" data-url="{{ route('admin.schema.index') }}" data-id="11" data-text="调度管理"><i class="iconfont">&#xe60d;</i>调度管理</a>
-            </li>
+            @foreach ($list as $v)
+                <li class="layui-nav-item">
+                    <a href="javascript:;"
+                       @if (isset($v['url'])) data-url="{{ $v['url'] }}" @endif
+                       @if (isset($v['id'])) data-id='{{ $v['id'] }}' @endif
+                       data-text="{{ $v['name'] }}">
+                        <i class="iconfont">@if (isset($v['icon'])) {{ $v['icon'] }} @endif</i>{{ $v['name'] }}
+                    </a>
+                    @if (isset($v['list']))
+                        <dl class="layui-nav-child">
+                        @foreach ($v['list'] as $vv)
+                        <dd><a href="javascript:;" data-url="{{ $vv['url'] }}" data-id='{{ $vv['id'] }}' data-text="{{ $vv['name'] }}"><span class="l-line"></span>{{ $vv['name'] }}</a></dd>
+                        @endforeach
+                        </dl>
+                    @endif
+                </li>
+            @endforeach
         </ul>
     </div>
     <!--右侧内容-->

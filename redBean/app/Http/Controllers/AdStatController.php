@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\AdStat;
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Http\Request;
 
 class AdStatController extends Controller
 {
-    protected $type = [
+    public $type = [
         1 => '展示',
         2 => '点击'
     ];
@@ -16,6 +17,21 @@ class AdStatController extends Controller
     public function index(Request $request)
     {
         $ad = AdStat::with('ad');
+
+//        if ($request->user()->type == 0) {
+//            $ad->whereHas('ad', function (Builder $query) use($request) {
+//               $query->where('user_id', $request->user()->id);
+//            });
+//        }
+
+        if ($request->input('id')) {
+            $ad->where('ad_id', $request->input('id'));
+        }
+
+        if ($request->input('type')) {
+            $ad->where('type', $request->input('type'));
+        }
+
         if ($request->input('ctime')) {
             $ad->where('created_at', '>=', $request->input('ctime'));
         }

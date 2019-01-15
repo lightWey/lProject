@@ -22,7 +22,70 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('admin.home');
+        $admin = [
+            [
+                'name' => '广告主管理',
+                'url' => route('admin.user.list'),
+                'id' => 1,
+                'icon' => ""
+            ],
+            [
+                'name' => '客服设置',
+                'url' => route('admin.c-config.index'),
+                'id' => 2,
+                'icon' => ''
+            ],
+            [
+                'name' => '调度管理',
+                'url' => route('admin.schema.index'),
+                'id' => 3,
+                'icon' => ''
+            ],
+            [
+                'name' => '系统设置',
+                'url' => route('admin.config.index'),
+                'id' => 4,
+                'icon' => ""
+            ],
+        ];
+
+        $user = [
+            [
+                'name' => '个人信息',
+                'url' => route('admin.info.modify'),
+                'id' => 5,
+                'icon' => ''
+            ],
+            [
+                'name' => '广告管理',
+                'url' => route('admin.ad.list'),
+                'id' => 10,
+                'icon' => '',
+            ],
+            [
+                'name' => '数据统计',
+                'icon' => '',
+                'list' => [
+                    [
+                        'name' => '广告统计',
+                        'url' => route('admin.ad.stat.group'),
+                        'id' => 11,
+                    ],
+                    [
+                        'name' => '数据详情',
+                        'url' => route('admin.ad.stat'),
+                        'id' => 12,
+                    ]
+                ]
+            ]
+        ];
+        if (Auth::user()->type == 0) {
+            $list = $user;
+        } else {
+            $list = array_merge($user, $admin);
+        }
+
+        return view('admin.home')->with('list', $list);
     }
 
     public function welcome()

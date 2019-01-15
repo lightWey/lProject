@@ -36,7 +36,7 @@ Route::name('admin.')->middleware('auth')->group(function () {
     Route::post('ad/add', 'AdController@storage')->name('ad.add');
     Route::get('ad/{ad}/detail', 'AdController@detail')->name('ad.detail');
     Route::post('ad/status', 'AdController@status')->name('ad.status');
-    Route::get('admin/ad/stat', 'AdController@stat')->name('ad.stat2');
+    Route::get('admin/ad/stat', 'AdController@stat')->name('ad.stat.group');
 
     Route::get('ad/stat', 'AdStatController@index')->name('ad.stat');
     Route::get('ad/stat/add', 'AdStatController@add')->name('ad.stat.add');

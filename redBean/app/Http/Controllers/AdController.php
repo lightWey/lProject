@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class AdController extends Controller
 {
+    private $type = [1 => 'CPM', 2 => 'CPC'];
+
     public function index()
     {
-        $type=[1 => 'CPM', 2 => 'CPC'];
         $ads = Ad::whereHas('user', function ($query) {
             $query->where('type', 0);
-        })->with('user')->withCount(['stat'=>function ($query) {
-            $query->where('created_at', '<=', date('Y-m-d H:i:s'));
-        }])->paginate(15);
-        return view('admin.adList')->with('ads', $ads)->with('type', $type);
+        })->with('user')->paginate(15);
+
+        return view('admin.adList')->with('ads', $ads)->with('type', $this->type);
     }
 
     public function detail(Ad $ad)
@@ -63,6 +64,26 @@ class AdController extends Controller
 
     public function stat(Request $request)
     {
-        return 123;
+        $user = $request->user();
+
+        $ad = Ad::whereHas('user', function (Builder $query) {
+            $query->where('type', 0);
+        })->with('user')->withCount(['stat as show'=>function (Builder $query) {
+            $query
+                ->where('created_at', '<=', date('Y-m-d H:i:s'))
+                ->where('type', 1);
+        }, 'stat as click'=>function (Builder $query) {
+            $query
+                ->where('created_at', '<=', date('Y-m-d H:i:s'))
+                ->where('type', 2);
+        }]);
+
+        if ($user->type == 0) {
+            $ad->where('user_id',$user->id);
+        }
+
+        $ads = $ad->paginate(15);
+
+        return view('admin.adListStat')->with('ads', $ads)->with('type', $this->type);
     }
 }

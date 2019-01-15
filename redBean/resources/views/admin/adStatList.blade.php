@@ -20,10 +20,21 @@
                     <button class="layui-btn layui-btn-small layui-btn-normal addBtn" data-title="添加记录" data-url="{{ route('admin.ad.stat.add') }}"><i class="layui-icon">&#xe654;</i></button>
                 </div>
                 <div class="layui-inline">
-                    <input type="text" autocomplete="off" name="ctime" class="layui-input" lay-verify="date" value="{{ request()->input('ctime') }}" id="ctime" placeholder="开始时间">
+                    <input type="text" autocomplete="off" name="id" class="layui-input" value="{{ request()->input('id') }}" placeholder="广告ID">
                 </div>
                 <div class="layui-inline">
-                    <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
+                    <select name="type">
+                        <option value=""></option>
+                        @foreach ($type as $k => $v)
+                            <option value="{{ $k }}" @if(request()->input('type') == $k) selected @endif>{{ $v }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <input type="text" autocomplete="off" name="ctime" class="layui-input"  value="{{ request()->input('ctime') }}" id="ctime" placeholder="开始时间">
+                </div>
+                <div class="layui-inline">
+                    <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  placeholder="结束时间" autocomplete="off" class="layui-input">
                 </div>
                 <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
             </div>
