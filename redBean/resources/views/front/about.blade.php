@@ -23,7 +23,7 @@
             <div class="callMe-left">
                 <div class="main">
                     <p class="callMe-txt" style="border-bottom: 1px solid #70bed5;padding-bottom: 15px;">感谢您来到红豆科技，若您有合作意向，请您使用以下方式联系我们,我们将尽快给您回复，并为您提供最真诚的服务，谢谢。</p>
-                    <p class="callMe-txt">总部地址：北京华夏永乐科技有限公司</p>
+                    <p class="callMe-txt">总部地址：北京红豆科技有限公司</p>
                     <p class="callMe-txt">广告主客服：QQ1983786349</p>
                     <p class="callMe-txt">开发者客服：QQ23503458</p>
                     <p class="callMe-txt">传　　真：010-57039507</p>

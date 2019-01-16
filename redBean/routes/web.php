@@ -50,6 +50,9 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
 });
 
 //Auth::routes();
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('user-login', 'Auth\LoginController@showLoginForm')->name('user-login');
