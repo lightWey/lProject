@@ -62,7 +62,7 @@
         <div class="layui-form-item" id="mm" @if ($config->random != 1) style="display: none" @endif>
             <label class="layui-form-label" id="num">每秒次数：</label>
             <div class="layui-input-block">
-                <input type="text" value="@if ($config->total) {{ $config->total/(strtotime($config->etime) - strtotime($config->ctime)) }} @endif " name="mm" required lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
+                <input type="text" value="@if ($config->total) {{ $config->total/(strtotime($config->etime) - strtotime($config->ctime)) }} @endif " name="mm" lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
