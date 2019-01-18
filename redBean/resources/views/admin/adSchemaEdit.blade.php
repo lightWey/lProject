@@ -16,7 +16,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">名称：</label>
             <div class="layui-input-block">
-                <input type="text" value="{{ $config->name }}" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+                <input type="text" value="{{ $config->name }}" name="name" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -33,13 +33,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">广告ID：</label>
             <div class="layui-input-block">
-                <input type="text" value="{{ $config->ad_id }}" name="ad_id" required lay-verify="required" placeholder="请输入广告id" autocomplete="off" class="layui-input">
+                <input type="text" value="{{ $config->ad_id }}" name="ad_id" lay-verify="required" placeholder="请输入广告id" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">开始时间：</label>
             <div class="layui-input-block">
-                <input type="text" id="ctime" value="{{ $config->ctime }}" name="ctime" required lay-verify="required" placeholder="请选择开始时间" autocomplete="off" class="layui-input">
+                <input type="text" id="ctime" value="{{ $config->ctime }}" name="ctime" lay-verify="required" placeholder="请选择开始时间" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -56,13 +56,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">结束时间：</label>
             <div class="layui-input-block">
-                <input type="text" id="etime" value="{{ $config->etime }}" name="etime" required lay-verify="required" placeholder="请选择结束时间" autocomplete="off" class="layui-input">
+                <input type="text" id="etime" value="{{ $config->etime }}" name="etime" lay-verify="required" placeholder="请选择结束时间" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item" id="mm" @if ($config->random != 1) style="display: none" @endif>
             <label class="layui-form-label" id="num">每秒次数：</label>
             <div class="layui-input-block">
-                <input type="text" value="@if ($config->total) {{ $config->total/(strtotime($config->etime) - strtotime($config->ctime)) }} @endif " name="mm" lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
+                <input type="text" value="@if ($config->total) {{ $config->total/(strtotime($config->etime) - strtotime($config->ctime)) }} @endif " name="mm" placeholder="请输入数量" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
