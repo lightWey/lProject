@@ -37,7 +37,7 @@ class IndexController extends Controller
                 'name' => '调度管理',
                 'url' => route('admin.schema.index'),
                 'id' => 3,
-                'icon' => ''
+                'icon' => ''
             ],
             [
                 'name' => '系统设置',
@@ -62,7 +62,7 @@ class IndexController extends Controller
             ],
             [
                 'name' => '数据统计',
-                'icon' => '',
+                'icon' => '',
                 'list' => [
                     [
                         'name' => '广告统计',
@@ -99,6 +99,7 @@ class IndexController extends Controller
 
         $userOnly = [
             [
+                'icon' => '',
                 'name' => '资金记录',
                 'url' => route('admin.recharge.index'),
                 'id' => 13,
@@ -123,12 +124,6 @@ class IndexController extends Controller
 
         $data->adCount = Ad::count();
         $data->adStatCount = Ad::count();
-
-//        $aa = User::select(DB::raw('count(*) ct'),DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d") tt'))
-//            ->groupBy(DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d")'))->get();
-
-
-
         return view('admin.welcome')->with('data', $data);
     }
 
