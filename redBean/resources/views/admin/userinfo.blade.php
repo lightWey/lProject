@@ -28,30 +28,41 @@
             </div>
         @endif
         <div class="layui-tab-item @if (empty(session('type'))) layui-show @endif">
-            <form class="layui-form" method="post"  style="width: 90%;padding-top: 20px;" action="{{ route('admin.info.edit') }}">
+            <form class="layui-form" method="post"  style="width: 90%;padding-top: 20px;" action="{{ route('admin.info.edit', ['user'=>$user->id]) }}">
                     @csrf
                 <div class="layui-form-item">
                     <label class="layui-form-label">ID：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="id" disabled autocomplete="off" class="layui-input layui-disabled" value="1">
+                        <input type="text" name="id" disabled autocomplete="off" class="layui-input layui-disabled" value="{{ $user->id }}">
                     </div>
                 </div>
+                @if (request()->user()->type)
                 <div class="layui-form-item">
                     <label class="layui-form-label">余额：</label>
                     <div class="layui-input-block">
                         <input type="text" name="coin" disabled autocomplete="off" class="layui-input layui-disabled" value="{{ $user->info->coin }}">
                     </div>
                 </div>
+                @endif
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="name" autocomplete="off" class="layui-input" value="{{ $user->name }}">
+                        @if (request()->user()->type)
+                            <input type="text" name="name" autocomplete="off" class="layui-input" value="{{ $user->name }}">
+                        @else
+                            <input type="text" name="name" autocomplete="off" disabled class="layui-input layui-disabled" value="{{ $user->name }}">
+                        @endif
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">姓名：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="info[name]" required  lay-verify="required" autocomplete="off" class="layui-input" value="{{ $user->info->name }}">
+                        @if (request()->user()->type)
+                            <input type="text" name="info[name]" required  lay-verify="required" autocomplete="off" class="layui-input" value="{{ $user->info->name }}">
+                        @else
+                            <input type="text" name="info[name]" required  lay-verify="required" disabled class="layui-input layui-disabled" value="{{ $user->info->name }}">
+                        @endif
+
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -92,7 +103,7 @@
             </form>
         </div>
         <div class="layui-tab-item @if (session('type') === 'pwd') layui-show @endif">
-            <form class="layui-form" style="width: 90%;padding-top: 20px;" action="{{ route('admin.password.reset') }}" method="POST">
+            <form class="layui-form" style="width: 90%;padding-top: 20px;" action="{{ route('admin.password.reset', ['user'=>$user->id]) }}" method="POST">
                 @csrf
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名：</label>

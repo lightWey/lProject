@@ -16,9 +16,6 @@
     <div class="column-content-detail">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <div class="layui-inline tool-btn">
-                    <button class="layui-btn layui-btn-small layui-btn-normal addBtn" data-title="添加记录" data-url="{{ route('admin.ad.stat.add') }}"><i class="layui-icon">&#xe654;</i></button>
-                </div>
                 <div class="layui-inline">
                     <input type="text" autocomplete="off" name="id" class="layui-input" value="{{ request()->input('id') }}" placeholder="广告ID">
                 </div>

@@ -47,7 +47,7 @@
             <ul class="layui-nav" lay-filter="rightNav">
                 <li class="layui-nav-item"><a href="javascript:void(0);" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" data-url="{{ route('admin.info.modify') }}" data-id='5' data-text="个人信息">{{ Auth::user()->name }}</a>
+                    <a href="javascript:;" data-url="{{ route('admin.info.modify', ['user'=>request()->user()->id]) }}" data-id='5' data-text="个人信息">{{ Auth::user()->name }}</a>
                 </li>
                 <li class="layui-nav-item"><a href="{{ route('admin.exit') }}">退出</a></li>
             </ul>

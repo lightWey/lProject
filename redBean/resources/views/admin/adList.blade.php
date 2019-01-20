@@ -14,6 +14,7 @@
 <body>
 <div class="wrap-container clearfix">
     <div class="column-content-detail">
+        @if (Request::user()->type)
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-inline tool-btn">
@@ -21,17 +22,18 @@
                 </div>
             </div>
         </form>
+        @endif
         <div class="layui-form" id="table-list">
             <table class="layui-table" lay-even lay-skin="nob">
                 <colgroup>
-                    <col width="50">
-                    <col class="hidden-xs" width="50">
-                    <col class="hidden-xs" width="100">
                     <col>
                     <col>
                     <col>
-                    <col width="80">
-                    <col width="150">
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
                     <col>
                     <col>
                     <col>
@@ -39,13 +41,13 @@
                 <thead>
                 <tr>
                     <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
-                    <th class="hidden-xs">ID</th>
+                    <th>ID</th>
                     <th>名称</th>
                     <th>链接</th>
                     <th>计费方法</th>
                     <th>单价</th>
                     <th>用户</th>
-                    <th class="hidden-xs">创建时间</th>
+                    <th>创建时间</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
@@ -56,11 +58,11 @@
                     <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></td>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $ad->name }}</td>
-                    <td class="hidden-xs">{{ $ad->url }}</td>
-                    <td class="hidden-xs">{{ $type[$ad->type] }}</td>
-                    <td class="hidden-xs">{{ $ad->once }}</td>
-                    <td class="hidden-xs">{{ $ad->user->name }}</td>
-                    <td class="hidden-xs">{{ $ad->created_at }}</td>
+                    <td>{{ $ad->url }}</td>
+                    <td>{{ $type[$ad->type] }}</td>
+                    <td>{{ $ad->once }}</td>
+                    <td>{{ $ad->user->name }}</td>
+                    <td>{{ $ad->created_at }}</td>
                     <td>
                         @if ($ad->status)
                             <button class="layui-btn layui-btn-mini layui-btn-normal">正常</button>

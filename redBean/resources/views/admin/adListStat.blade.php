@@ -16,8 +16,14 @@
     <div class="column-content-detail">
         <form class="layui-form" action="">
             <div class="layui-form-item">
+                <div class="layui-inline">
+                    <input type="text" autocomplete="off" name="ctime" class="layui-input"  value="{{ request()->input('ctime') }}" id="ctime" placeholder="开始时间">
+                </div>
+                <div class="layui-inline">
+                    <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  placeholder="结束时间" autocomplete="off" class="layui-input">
+                </div>
+                <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
             </div>
-        </form>
         <div class="layui-form" id="table-list">
             <table class="layui-table" lay-even lay-skin="nob">
                 <colgroup>
@@ -76,6 +82,32 @@
 </div>
 <script src="{{asset('admin/layui/layui.js')}}" type="text/javascript" charset="utf-8"></script>
 <script src="{{asset('admin/js/common.js')}}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['form','jquery', 'laydate', 'layer'], function() {
+        var form = layui.form(),
+            layer = layui.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate;
+
+        form.render();
+
+        $('#ctime').click(function () {
+            laydate({
+                elem: $('#ctime')[0],
+                format: 'YYYY-MM-DD',
+                max: laydate.now(-1)
+            });
+        })
+
+        $('#etime').click(function () {
+            laydate({
+                elem: $('#etime')[0],
+                format: 'YYYY-MM-DD',
+                max: laydate.now()
+            });
+        })
+    })
+</script>
 </body>
 
 </html>

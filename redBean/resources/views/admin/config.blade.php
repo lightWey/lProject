@@ -16,10 +16,6 @@
     <ul class="layui-tab-title">
         <li class="layui-this">站点配置</li>
         <li>SEO配置</li>
-        <li>邮箱配置</li>
-        <li>评论设置</li>
-        <li>合作伙伴设置</li>
-        <li>客服设置</li>
     </ul>
     <div class="layui-tab-content">
         <!--站点配置-->
@@ -67,7 +63,7 @@
                 </div>
             </form>
         </div>
-        <!--SEO配置-->ß
+        <!--SEO配置-->
         <div class="layui-tab-item">
             <form class="layui-form" style="width: 90%;padding-top: 20px;">
                 <div class="layui-form-item">

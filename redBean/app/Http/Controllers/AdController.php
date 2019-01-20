@@ -66,15 +66,34 @@ class AdController extends Controller
     {
         $user = $request->user();
 
+
+        $ctime = date('Y-m-d', strtotime('-1 day'));
+        $etime = date('Y-m-d');
+
+        if ($request->input('ctime')) {
+            $ctime = $request->input('ctime');
+        }
+
+        if ($request->input('etime')) {
+            $etime = $request->input('etime');
+        }
+        if ($ctime > date('Y-m-d')) {
+            $ctime = date('Y-m-d', strtotime('-1 day'));
+        }
+
+        if ($etime > date('Y-m-d')) {
+            $etime = date('Y-m-d H:i:s');
+        }
+
         $ad = Ad::whereHas('user', function (Builder $query) {
             $query->where('type', 0);
-        })->with('user')->withCount(['stat as show'=>function (Builder $query) {
+        })->with('user')->withCount(['stat as show'=>function (Builder $query) use ($ctime, $etime) {
             $query
-                ->where('created_at', '<=', date('Y-m-d H:i:s'))
+                ->whereBetween('created_at', [$ctime, $etime])
                 ->where('type', 1);
-        }, 'stat as click'=>function (Builder $query) {
+        }, 'stat as click'=>function (Builder $query) use ($ctime, $etime) {
             $query
-                ->where('created_at', '<=', date('Y-m-d H:i:s'))
+                ->whereBetween('created_at', [$ctime, $etime])
                 ->where('type', 2);
         }]);
 
@@ -83,6 +102,7 @@ class AdController extends Controller
         }
 
         $ads = $ad->paginate(15);
+        $ads = $ads->appends($request->all());
 
         return view('admin.adListStat')->with('ads', $ads)->with('type', $this->type);
     }

@@ -20,15 +20,17 @@ Route::get('/admin/home', 'Common\IndexController@index')->middleware('auth')->n
 Route::namespace('Common')->name('admin.')->group(function () {
     Route::get('/index', 'IndexController@index');
     Route::get('/welcome', 'IndexController@welcome')->name('welcome');
-    Route::post('/password/reset', 'IndexController@resetPassword')->name('password.reset');
+    Route::post('/{user}/password/reset', 'IndexController@resetPassword')->name('password.reset');
     Route::get('/exit', 'IndexController@exit')->name('exit');
 });
 
 Route::name('admin.')->middleware('auth')->group(function () {
-    Route::get('admin-info', 'UserInfoController@modify')->name('info.modify');
-    Route::post('admin-info', 'UserInfoController@edit')->name('info.edit');
+    Route::get('admin-{user}-info', 'UserInfoController@modify')->name('info.modify');
+    Route::post('admin-{user}-info', 'UserInfoController@edit')->name('info.edit');
     Route::get('user-list', 'UserInfoController@index')->name('user.list');
+    Route::get('user-add', 'UserInfoController@add')->name('user.add');
     Route::post('user/status', 'UserInfoController@status')->name('user.status');
+    Route::post('user-storage', 'UserInfoController@storage')->name('user.storage');
 
     Route::get('ad', 'AdController@index')->name('ad.list');
     Route::get('ad/detail', 'AdController@detail')->name('ad.detail');
@@ -47,6 +49,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::post('config/upload', 'ConfigController@upload')->name('config.upload');
     Route::resource('c-config','ContentConfigController');
     Route::resource('schema', 'AdSchemaController');
+    Route::resource('recharge', 'RechargeController');
 });
 
 //Auth::routes();

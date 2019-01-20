@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\AdStat;
-use Illuminate\Database\Schema\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class AdStatController extends Controller
@@ -18,11 +18,11 @@ class AdStatController extends Controller
     {
         $ad = AdStat::with('ad');
 
-//        if ($request->user()->type == 0) {
-//            $ad->whereHas('ad', function (Builder $query) use($request) {
-//               $query->where('user_id', $request->user()->id);
-//            });
-//        }
+        if ($request->user()->type == 0) {
+            $ad->whereHas('ad', function (Builder $query) use($request) {
+               $query->where('user_id', $request->user()->id);
+            });
+        }
 
         if ($request->input('id')) {
             $ad->where('ad_id', $request->input('id'));

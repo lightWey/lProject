@@ -12,19 +12,26 @@
 </head>
 
 <body>
-<div class="wrap-container clearfix">
+<div class="wrap-container">
     <div class="column-content-detail">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <div class="layui-inline tool-btn">
+                    <button class="layui-btn layui-btn-small layui-btn-normal addBtn" data-title="添加广告主" data-url="{{ route('admin.user.add') }}"><i class="layui-icon">&#xe654;</i></button>
+                </div>
+            </div>
+        </form>
         <div class="layui-form" id="table-list">
             <table class="layui-table" lay-even lay-skin="nob">
                 <colgroup>
-                    <col width="50">
-                    <col class="hidden-xs" width="50">
-                    <col class="hidden-xs" width="100">
                     <col>
                     <col>
                     <col>
-                    <col width="80">
-                    <col width="150">
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
                     <col>
                     <col>
                     <col>
@@ -32,14 +39,14 @@
                 <thead>
                 <tr>
                     <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
-                    <th class="hidden-xs">ID</th>
+                    <th>ID</th>
                     <th>用户名</th>
                     <th>电邮</th>
                     <th>电话</th>
                     <th>微信</th>
                     <th>QQ</th>
                     <th>余额</th>
-                    <th class="hidden-xs">创建时间</th>
+                    <th>创建时间</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
@@ -65,7 +72,7 @@
                     </td>
                     <td>
                         <div class="layui-inline">
-                            {{--<button class="layui-btn layui-btn-small layui-btn-normal go-btn" data-id="1" data-url="article-detail.html"><i class="layui-icon">&#xe642;</i></button>--}}
+                            <a href="{{ route('admin.info.modify', ['user'=>$user->id]) }}" class="layui-btn layui-btn-small layui-btn-normal" data-id="1"><i class="layui-icon">&#xe642;</i></a>
                             <button class="layui-btn layui-btn-small layui-btn-danger del-btn" data-id="{{ $user->id }}" data-url="{{ route('admin.user.status') }}" data-csrf="{{ csrf_token() }}"><i class="layui-icon">&#xe640;</i></button>
                         </div>
                     </td>
