@@ -58,6 +58,10 @@ class AdSchemaController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        if ($data['mm']) {
+          unset($data['mm']);
+        }
         if (isset($data['id'])) {
             return ['msg' => '失败'];
         }
@@ -84,7 +88,7 @@ class AdSchemaController extends Controller
             $data['total'] = (strtotime($data['etime']) - strtotime($data['ctime'])) * $data['total'];
         }
 
-        $config = new AdSchema($data);
+        $config = new AdSchema(array_filter($data));
         $config->save();
         return ['msg'=>'成功'];
     }

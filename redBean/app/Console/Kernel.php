@@ -74,7 +74,7 @@ class Kernel extends ConsoleKernel
             }
             $adSchema->status = 2;
             $adSchema->save();
-        })->everyFiveMinutes();
+        })->everyMinute();
 
     }
 

@@ -44,6 +44,7 @@
                     <th>ID</th>
                     <th>名称</th>
                     <th>链接</th>
+                    <th>推广链接</th>
                     <th>计费方法</th>
                     <th>单价</th>
                     <th>用户</th>

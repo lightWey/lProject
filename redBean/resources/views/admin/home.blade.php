@@ -45,7 +45,7 @@
                 </a>
             </div>
             <ul class="layui-nav" lay-filter="rightNav">
-                <li class="layui-nav-item"><a href="javascript:void(0);" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe60d;</i></a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" id="refresh" data-text="刷新"><i class="iconfont">&#xe60d;</i></a></li>
                 <li class="layui-nav-item">
                     <a href="javascript:;" data-url="{{ route('admin.info.modify', ['user'=>request()->user()->id]) }}" data-id='5' data-text="个人信息">{{ Auth::user()->name }}</a>
                 </li>
@@ -74,14 +74,21 @@
 
     </div>
 </div>
-<script type="text/javascript">
-    var scope={
-        link:"{{ route('admin.welcome') }}"
-    }
-</script>
 <script src="{{asset('admin/layui/layui.js')}}" type="text/javascript" charset="utf-8"></script>
 <script src="{{asset('admin/js/common.js')}}" type="text/javascript" charset="utf-8"></script>
 <script src="{{asset('admin/js/main.js')}}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var bb;
+    layui.use(['jquery', 'layer'], function() {
+        var layer = layui.layer,
+            $ = layui.jquery;
+
+        $('#refresh').click(function () {
+            $('.layui-tab-item.layui-show').children().get(0).contentWindow.location.reload(true);
+        })
+
+    });
+</script>
 
 </body>
 </html>
