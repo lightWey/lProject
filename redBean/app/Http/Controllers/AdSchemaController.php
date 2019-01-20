@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class AdSchemaController extends Controller
 {
     protected $status = [
-        '失败','普通','成功'
+        '失败','进行中','成功'
     ];
     protected $type=[
         1 => '浏览',
@@ -66,8 +66,8 @@ class AdSchemaController extends Controller
             return ['msg' => '失败'];
         }
 
-        if (strtotime($data['ctime']) <= (time() + 600)) {
-            return ['msg' => '开始时间最少应该在10分钟之后'];
+        if (strtotime($data['ctime']) <= (time() + 300)) {
+            return ['msg' => '开始时间最少应该在5分钟之后'];
         }
 
         if (empty($data['etime'])) {
@@ -76,6 +76,10 @@ class AdSchemaController extends Controller
 
         if (strtotime($data['etime']) <= strtotime($data['ctime'])) {
             return ['msg' => '结束时间不能小于开始时间'];
+        }
+
+        if ($data['total'] >= 20000) {
+            return ['msg' => '单次任务最大数量请不要超过2w'];
         }
 
         $ad = Ad::find($data['ad_id']);
