@@ -24,7 +24,6 @@
                     <col>
                     <col>
                     <col>
-                    <col>
                 </colgroup>
                 <thead>
                 <tr>
@@ -32,7 +31,6 @@
                     <th>ID</th>
                     <th>用户名</th>
                     <th>用户ID</th>
-                    <th>类型</th>
                     <th>金额(元)</th>
                     <th>管理员</th>
                     <th>创建时间</th>
@@ -45,7 +43,6 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $recharge->user->name }}</td>
                     <td>{{ $recharge->user->id }}</td>
-                    <td>{{ $type[$recharge->type] }}</td>
                     <td>{{ $recharge->amount }}</td>
                     <td>{{ $recharge->adminUser->name }}</td>
                     <td>{{ $recharge->created_at }}</td>

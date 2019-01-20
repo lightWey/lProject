@@ -49,6 +49,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::post('config/upload', 'ConfigController@upload')->name('config.upload');
     Route::resource('c-config','ContentConfigController');
     Route::resource('schema', 'AdSchemaController');
+    Route::get('recharge/used', 'RechargeController@indexOther')->name('recharge.used');
     Route::resource('recharge', 'RechargeController');
 });
 

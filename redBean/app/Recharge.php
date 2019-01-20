@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recharge extends Model
 {
+    protected $fillable=[
+        'admin','type','amount'
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);

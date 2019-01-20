@@ -30,7 +30,8 @@ class Kernel extends ConsoleKernel
 //         $schedule->command('inspire')
 //                  ->hourly();
         $schedule->call(function () {
-            $adSchema = AdSchema::where('status', 1)->first();
+            $adSchema = AdSchema::where('status', 1)->with('ad.user')->first();
+            dd($adSchema);
             if (empty($adSchema)) {
                 return false;
             }
@@ -52,6 +53,11 @@ class Kernel extends ConsoleKernel
                         'updated_at' => $interval,
                         'real' => 0
                     ]));
+                    $adSchema->ad->user->recharge()->create([
+                        'admin' => 1,
+                        'type' => 2,
+                        'amount'=> 0 - ($adSchema->ad->once * $int)
+                    ]);
                 }
             } else {
                 $test = 0;
@@ -68,12 +74,18 @@ class Kernel extends ConsoleKernel
                         'updated_at' => $time,
                         'real' => 0
                     ]));
-
+                    $adSchema->ad->user->recharge()->create([
+                        'admin' => 1,
+                        'type' => 2,
+                        'amount'=> 0 - $adSchema->ad->once
+                    ]);
                     $test+=1;
                 }
             }
             $adSchema->status = 2;
             $adSchema->save();
+            $adSchema->ad->user->info->coin += (0 - $adSchema->total * $adSchema->ad->once);
+            $adSchema->ad->user->info->save();
         })->everyMinute();
 
     }

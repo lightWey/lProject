@@ -92,7 +92,12 @@ class IndexController extends Controller
                         'name' => '充值记录',
                         'url' => route('admin.recharge.index'),
                         'id' => 13,
-                    ]
+                    ],
+                    [
+                        'name' => '消耗记录',
+                        'url' => route('admin.recharge.used'),
+                        'id' => 14,
+                    ],
                 ]
             ]
         ];
@@ -101,8 +106,18 @@ class IndexController extends Controller
             [
                 'icon' => '',
                 'name' => '资金记录',
-                'url' => route('admin.recharge.index'),
-                'id' => 13,
+                'list' => [
+                    [
+                        'name' => '充值记录',
+                        'url' => route('admin.recharge.index'),
+                        'id' => 13,
+                    ],
+                    [
+                        'name' => '消耗记录',
+                        'url' => route('admin.recharge.used'),
+                        'id' => 14,
+                    ]
+                ]
             ]
         ];
 

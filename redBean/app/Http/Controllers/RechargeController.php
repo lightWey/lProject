@@ -20,16 +20,27 @@ class RechargeController extends Controller
     public function index(Request $request)
     {
         $recharges = Recharge::with(['user','adminUser']);
-
+        $recharges->where('type', 1);
         if (empty($request->user()->type)) {
             $recharges->where('user_id',$request->user()->id);
-        } else {
-            $recharges->where('type', 1);
         }
 
         $recharges = $recharges->paginate(15);
 
         return view('admin.recharge')->with('recharges', $recharges)->with('type', $this->type);
+    }
+
+    public function indexOther(Request $request)
+    {
+        $recharges = Recharge::with(['user','adminUser']);
+        $recharges->where('type', 2);
+        if (empty($request->user()->type)) {
+            $recharges->where('user_id',$request->user()->id);
+        }
+
+        $recharges = $recharges->paginate(15);
+
+        return view('admin.rechargeOther')->with('recharges', $recharges)->with('type', $this->type);
     }
 
     /**

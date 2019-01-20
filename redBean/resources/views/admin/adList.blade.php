@@ -60,6 +60,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $ad->name }}</td>
                     <td>{{ $ad->url }}</td>
+                    <td>{{ url('url/'.$ad->id) }}</td>
                     <td>{{ $type[$ad->type] }}</td>
                     <td>{{ $ad->once }}</td>
                     <td>{{ $ad->user->name }}</td>
