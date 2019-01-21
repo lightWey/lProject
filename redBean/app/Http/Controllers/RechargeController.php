@@ -83,6 +83,10 @@ class RechargeController extends Controller
         $uid = $validatedData['user_id'];
         $user = User::find($uid);
 
+        if (empty($user)) {
+            return back()->with('success', '请填写正确的用户id');
+        }
+
         if ($user->type) {
             return back()->with('success', '只能给广告主充值');
         }
