@@ -22,7 +22,14 @@
                             </div>
                             <div class="right-text-con">
                                 <p class="name">会员数</p>
-                                <p><span class="color-org">{{ $data->userCount }}</span>数据<span class="iconfont">&#xe628;</span></p>
+                                <p>
+                                    <span class="color-org">{{ $data->user[$data->index] }}</span>数据
+                                    @if ($data->user[$data->index] > $data->user[$data->preIndex])
+                                        <span class="iconfont">&#xe60f;</span>
+                                    @else
+                                        <span class="iconfont">&#xe60f;</span>
+                                    @endif
+                                </p>
                             </div>
                         </a>
                     </li>
@@ -33,7 +40,14 @@
                             </div>
                             <div class="right-text-con">
                                 <p class="name">广告数</p>
-                                <p><span class="color-blue">{{ $data->adCount }}</span>数据<span class="iconfont">&#xe628;</span></p>
+                                <p>
+                                    <span class="color-blue">{{ $data->ad[$data->index] }}</span>数据
+                                    @if ($data->ad[$data->index] > $data->ad[$data->preIndex])
+                                        <span class="iconfont">&#xe628;</span>
+                                    @else
+                                        <span class="iconfont">&#xe60f;</span>
+                                    @endif
+                                </p>
                             </div>
                         </a>
                     </li>
@@ -43,8 +57,15 @@
                                 <span class="iconfont">&#xe605;</span>
                             </div>
                             <div class="right-text-con">
-                                <p class="name">记录数</p>
-                                <p><span class="color-green">{{ $data->adStatCount }}</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                <p class="name">充值数</p>
+                                <p>
+                                    <span class="color-green">{{ $data->recharge[$data->index] }}</span>数据
+                                    @if ($data->recharge[$data->index] > $data->recharge[$data->preIndex])
+                                        <span class="iconfont">&#xe628;</span>
+                                    @else
+                                        <span class="iconfont">&#xe60f;</span>
+                                    @endif
+                                </p>
                             </div>
                         </a>
                     </li>
@@ -173,7 +194,7 @@
                             trigger: "axis"
                         },
                         legend: {
-                            data: ["会员", "文章", "评论"],
+                            data: ["会员", "广告", "充值"],
                             selectedMode: false,
                         },
                         toolbox: {
@@ -227,10 +248,10 @@
                                         }
                                     }
                                 },
-                                data: [10, 12, 21, 54, 260, 830, 710]
+                                data: [{{ implode($data->user, ',') }}]
                             },
                             {
-                                name: "文章",
+                                name: "广告",
                                 type: "line",
                                 smooth: true,
                                 itemStyle: {
@@ -240,7 +261,7 @@
                                         }
                                     }
                                 },
-                                data: [30, 182, 434, 791, 390, 30, 10]
+                                data: [{{ implode($data->ad, ',') }}]
                             },
                             {
                                 name: "评论",
@@ -254,7 +275,7 @@
                                         color: "rgb(110, 211, 199)"
                                     }
                                 },
-                                data: [1320, 1132, 601, 234, 120, 90, 20]
+                                data: [{{ implode($data->recharge, ',') }}]
                             }
                         ]
                     }

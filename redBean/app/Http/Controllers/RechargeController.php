@@ -77,7 +77,7 @@ class RechargeController extends Controller
         }
         $validatedData = $request->validate([
             'user_id' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|numeric',
             'remark' => 'nullable|between:1,255',
         ]);
         $uid = $validatedData['user_id'];

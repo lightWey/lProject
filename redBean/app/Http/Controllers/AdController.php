@@ -6,6 +6,7 @@ use App\Ad;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
 {
@@ -13,9 +14,13 @@ class AdController extends Controller
 
     public function index()
     {
-        $ads = Ad::whereHas('user', function ($query) {
+         $ad = Ad::whereHas('user', function ($query) {
             $query->where('type', 0);
-        })->with('user')->paginate(15);
+             if (!Auth::user()->type) {
+                 $query->where('id', Auth::user()->id);
+             }
+        })->with('user');
+        $ads = $ad->paginate(15);
 
         return view('admin.adList')->with('ads', $ads)->with('type', $this->type);
     }

@@ -10,7 +10,9 @@ namespace App\Http\Controllers\Common;
 
 use App\Ad;
 use App\Http\Controllers\Controller;
+use App\Recharge;
 use App\User;
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -135,10 +137,32 @@ class IndexController extends Controller
     public function welcome()
     {
         $data = new \stdClass();
-        $data->userCount = User::where('type', '=', 0)->count();
+        $today = strtotime('today');
+        $times = [$today];
+        $numbers = range(1,6);
+        foreach ($numbers as $v) {
+            $times[] = strtotime((0-$v).' day', $today);
+        }
 
-        $data->adCount = Ad::count();
-        $data->adStatCount = Ad::count();
+        $dates = [];
+
+        foreach ($times as $time) {
+            $dates[date('w', $time)] = $time;
+        }
+
+        ksort($dates);
+        $tem = array_shift($dates);
+        array_push($dates, $tem);
+
+        foreach ($dates as $k => $date) {
+            $date1 = date('Y-m-d', $date);
+            $date2 = date('Y-m-d', $date+86400);
+            $data->user[$date] = User::where('type', '=', 0)->whereBetween('created_at', [$date1, $date2])->count();
+            $data->ad[$date] = Ad::whereBetween('created_at', [$date1, $date2])->count();
+            $data->recharge[$date] = Recharge::where('type', 1)->whereBetween('created_at', [$date1, $date2])->count();
+        }
+        $data->index = $today;
+        $data->preIndex = strtotime('-1 day', $today);
         return view('admin.welcome')->with('data', $data);
     }
 
