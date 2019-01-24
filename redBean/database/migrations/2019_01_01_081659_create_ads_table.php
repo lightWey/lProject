@@ -18,7 +18,7 @@ class CreateAdsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->tinyInteger('status')->unsigned()->default(1);
             $table->tinyInteger('type')->unsigned()->default(1);
-            $table->decimal('once')->unsigned();
+            $table->unsignedDecimal('once',10,4);
             $table->integer('used')->unsigned()->default(0);
             $table->string('url')->nullable(true);
             $table->string('name');

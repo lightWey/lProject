@@ -18,7 +18,7 @@ class CreateRechargesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('admin')->unsigned();
             $table->tinyInteger('type')->unsigned();
-            $table->decimal('amount', 8, 4);
+            $table->unsignedDecimal('amount', 12, 4);
             $table->string('remark')->default('');
             $table->timestamps();
         });

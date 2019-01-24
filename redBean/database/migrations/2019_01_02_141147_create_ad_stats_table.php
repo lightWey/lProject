@@ -17,7 +17,7 @@ class CreateAdStatsTable extends Migration
             $table->increments('id');
             $table->integer('ad_id')->unsigned();
             $table->integer('ad_schema_id')->default(0)->unsigned();
-            $table->unsignedDecimal('cons',8,4);
+            $table->unsignedDecimal('cons',12,4);
             $table->text('referer')->nullable(true);
             $table->string('ip')->default('');
             $table->timestamps();

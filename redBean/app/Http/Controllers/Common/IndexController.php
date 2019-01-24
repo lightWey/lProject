@@ -88,7 +88,7 @@ class IndexController extends Controller
                     [
                         'name' => '充值',
                         'url' => route('admin.recharge.create'),
-                        'id' => 14,
+                        'id' => 15,
                     ],
                     [
                         'name' => '充值记录',
