@@ -57,7 +57,7 @@
                 @foreach($ads as $ad)
                 <tr>
                     <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></td>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $ad->id }}</td>
                     <td>{{ $ad->name }}</td>
                     <td>{{ $ad->url }}</td>
                     <td>{{ url('url/'.$ad->id) }}</td>
