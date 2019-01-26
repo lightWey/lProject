@@ -14,6 +14,9 @@ Route::get('/', 'HomeController@index');
 Route::get('media', 'HomeController@media');
 Route::get('about', 'HomeController@about');
 Route::get('url/{ad}', 'Common\IndexController@url');
+Route::get('privacy', 'HomeController@privacy');
+Route::get('terms', 'HomeController@terms');
+Route::post('advisory', 'HomeController@advisory');
 
 Route::get('/admin/home', 'Common\IndexController@index')->middleware('auth')->name('home');
 
@@ -51,6 +54,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::resource('schema', 'AdSchemaController');
     Route::get('recharge/used', 'RechargeController@indexOther')->name('recharge.used');
     Route::resource('recharge', 'RechargeController');
+    Route::get('advisory', 'AdvisoryController@index')->name('advisory');
 });
 
 //Auth::routes();

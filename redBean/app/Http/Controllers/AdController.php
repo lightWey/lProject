@@ -48,8 +48,12 @@ class AdController extends Controller
             'type' => 'Digits Between:1,2',
             'url' => 'URL',
         ]);
-
-        $ad = new Ad($validatedData);
+        if ($request->input('id')) {
+            $ad = Ad::find($request->input('id'));
+            $ad->fill($validatedData);
+        } else {
+            $ad = new Ad($validatedData);
+        }
         $ad->save();
         return ['msg'=>'成功'];
     }

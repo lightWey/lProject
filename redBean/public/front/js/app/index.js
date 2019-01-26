@@ -84,9 +84,10 @@ function qutishi(xuanding){
 
 // 点击立即预约执行
 function yuyue(usertype){
-	var nickname_input = $("input[name='nickname']");
+	var nickname_input = $("input[name='name']");
 	var phone_input = $("input[name='phone']");
 	var company_input = $("input[name='company']");
+	var vcsrf = $("input[name='_token']").val();
 
 	// 清空提示重新判断
 	qutishi(nickname_input);
@@ -124,15 +125,18 @@ function yuyue(usertype){
 	if(!issubmit){
 		return false;
 	}
-	var sendData = "type="+usertype+"&nickname="+nickname+"&phone="+phone+"&company="+company;
+	var sendData = "type="+usertype+"&name="+nickname+"&phone="+phone+"&company="+company;
 
+	console.log(vcsrf);
 	$.ajax({
-		url:"./reservation.php",
+		url:"/advisory",
 		data:sendData,
 		dataType:"json",
+        type:"post",
+        headers: {
+            "X-CSRF-TOKEN": vcsrf
+        },
 		success:function(data){
-			
-
 			$(".sucessBox-txt").html(data.msg);
 			$(".yy-sucessBox").show();
 

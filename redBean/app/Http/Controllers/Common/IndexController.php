@@ -101,7 +101,14 @@ class IndexController extends Controller
                         'id' => 14,
                     ],
                 ]
-            ]
+            ],
+            [
+                'name' => '预约咨询',
+                'url' => route('admin.advisory'),
+                'id' => 16,
+                'icon' => '',
+            ],
+
         ];
 
         $userOnly = [
@@ -207,5 +214,6 @@ class IndexController extends Controller
             'ip' => $request->getClientIp(),
             'cons' => $ad->once
         ]);
+        return redirect($ad->url, 302);
     }
 }

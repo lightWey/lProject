@@ -12,6 +12,9 @@
 <body>
 <div class="wrap-container">
     <form class="layui-form" style="width: 90%;padding-top: 20px;">
+        @if ($ad->id)
+            <input type="hidden" name="id" value="{{ $ad->id }}">
+        @endif
         <div class="layui-form-item">
             <label class="layui-form-label">广告主：</label>
             <div class="layui-input-block">

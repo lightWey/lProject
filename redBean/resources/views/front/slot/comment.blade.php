@@ -6,7 +6,7 @@
         <div class="bd">
             <div class="bd-list">
                 <label for="" style="padding-left:2em">姓名</label>
-                <input type="text" placeholder="请输入您的姓名" name="nickname" maxlength="20">
+                <input type="text" placeholder="请输入您的姓名" name="name" maxlength="20">
                 <span class="error-txt">不能为空~</span>
                 <span class="error-icon"></span>
             </div>
@@ -22,6 +22,7 @@
                 <span class="error-txt">不能为空~</span>
                 <span class="error-icon"></span>
             </div>
+            @csrf
             <a href="javascript:;" class="advisory-btn" onclick="yuyue(1)">立即预约</a>
 
         </div>
