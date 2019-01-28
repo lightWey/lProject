@@ -38,7 +38,6 @@ class Kernel extends ConsoleKernel
             $adSchema->save();
             $sctime = strtotime($adSchema->ctime);
             $setime = strtotime($adSchema->etime);
-
             $cha = $setime - $sctime; //差值
             if ($adSchema->random == 1) {
                 $int = ceil($adSchema->total / $cha);

@@ -117,7 +117,7 @@
                 elem: $('#ctime')[0],
                 format: 'YYYY-MM-DD hh:mm:ss',
                 istime: true,
-                min: laydate.now(),
+                min: laydate.now(-1),
                 max: laydate.now(15),
                 choose: function (datas) {
                     ctime();
@@ -130,7 +130,7 @@
                 elem: $('#etime')[0],
                 format: 'YYYY-MM-DD hh:mm:ss',
                 istime: true,
-                min: laydate.now(),
+                min: laydate.now(-1),
                 max: laydate.now(15),
                 choose: function (datas) {
                     ctime();
