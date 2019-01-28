@@ -80,8 +80,8 @@
     <div class="footer-bottom">
         <div class="bottom-left">
             <a href="/about">关于红豆科技</a>
-            <a href="/privacy">隐私权保护</a>
-            <a href="/terms">服务条款</a>
+            {{--<a href="/privacy">隐私权保护</a>--}}
+            {{--<a href="/terms">服务条款</a>--}}
         </div>
         <p class="bottom-right"> Copyright  2008-2018 红豆科技 All rights reserved. </p>
     </div>
