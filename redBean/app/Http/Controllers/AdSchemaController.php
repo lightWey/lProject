@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class AdSchemaController extends Controller
 {
     protected $status = [
-        '失败','进行中','成功'
+        '失败','等待','进行','成功'
     ];
     protected $type=[
         1 => '浏览',

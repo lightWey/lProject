@@ -22,8 +22,17 @@
                 <div class="layui-inline">
                     <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  placeholder="结束时间" autocomplete="off" class="layui-input">
                 </div>
+                <div class="layui-inline">
+                    <select name="user">
+                        <option value=""></option>
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}" @if(request()->input('user') == $user->id) selected @endif>{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
             </div>
+        </form>
         <div class="layui-form" id="table-list">
             <table class="layui-table" lay-even lay-skin="nob">
                 <colgroup>
@@ -49,6 +58,7 @@
                     <th>类型</th>
                     <th>曝光数</th>
                     <th>点击数</th>
+                    <th>消耗</th>
                     <th>状态</th>
                 </tr>
                 </thead>
@@ -63,6 +73,7 @@
                     <td class="hidden-xs">{{ $type[$ad->type] }}</td>
                     <td class="hidden-xs"><a href="{{ route('admin.ad.stat', ['id'=>$ad->id, 'type'=>1]) }}">{{ $ad->show }}</a></td>
                     <td class="hidden-xs"><a href="{{ route('admin.ad.stat', ['id'=>$ad->id, 'type'=>2]) }}">{{ $ad->click }}</a></td>
+                    <td class="hidden-xs">{{ isset($ad->cons_sum) ? $ad->cons_sum : 0 }} 元</td>
                     <td>
                         @if ($ad->status)
                             <button class="layui-btn layui-btn-mini layui-btn-normal">正常</button>
@@ -95,7 +106,7 @@
             laydate({
                 elem: $('#ctime')[0],
                 format: 'YYYY-MM-DD',
-                max: laydate.now(-1)
+                max: laydate.now()
             });
         })
 
@@ -103,7 +114,7 @@
             laydate({
                 elem: $('#etime')[0],
                 format: 'YYYY-MM-DD',
-                max: laydate.now()
+                max: laydate.now(+1)
             });
         })
     })

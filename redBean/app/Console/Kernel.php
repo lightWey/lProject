@@ -31,11 +31,11 @@ class Kernel extends ConsoleKernel
 //                  ->hourly();
         $schedule->call(function () {
             $adSchema = AdSchema::where('status', 1)->with('ad.user')->first();
-            dd($adSchema);
             if (empty($adSchema)) {
                 return false;
             }
-
+            $adSchema->status = 2;
+            $adSchema->save();
             $sctime = strtotime($adSchema->ctime);
             $setime = strtotime($adSchema->etime);
 
@@ -82,7 +82,7 @@ class Kernel extends ConsoleKernel
                     $test+=1;
                 }
             }
-            $adSchema->status = 2;
+            $adSchema->status = 3;
             $adSchema->save();
             $adSchema->ad->user->info->coin += (0 - $adSchema->total * $adSchema->ad->once);
             $adSchema->ad->user->info->save();

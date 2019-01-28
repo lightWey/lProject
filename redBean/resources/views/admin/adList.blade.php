@@ -13,14 +13,37 @@
 
 <body>
 <div class="wrap-container clearfix">
-    <div class="column-content-detail">
+    <div class="column-content-detail" style="min-height: 500px">
         @if (Request::user()->type)
         <form class="layui-form" action="">
-            <div class="layui-form-item">
+            <div class="layui-inline" style="margin-right: 10px">
                 <div class="layui-inline tool-btn">
                     <button class="layui-btn layui-btn-small layui-btn-normal addBtn" data-title="添加广告" data-url="{{ route('admin.ad.add') }}"><i class="layui-icon">&#xe654;</i></button>
                 </div>
             </div>
+            <div class="layui-inline">
+                <select name="type">
+                    <option value=""></option>
+                    @foreach ($type as $k => $v)
+                        <option value="{{ $k }}" @if(request()->input('type') == $k) selected @endif>{{ $v }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="layui-inline">
+                <select name="user">
+                    <option value=""></option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}" @if(request()->input('user') == $user->id) selected @endif>{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="layui-inline">
+                <input type="text" autocomplete="off" name="ctime" class="layui-input"  value="{{ request()->input('ctime') }}" id="ctime" placeholder="开始时间">
+            </div>
+            <div class="layui-inline">
+                <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  placeholder="结束时间" autocomplete="off" class="layui-input">
+            </div>
+            <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
         </form>
         @endif
         <div class="layui-form" id="table-list">
@@ -90,6 +113,32 @@
 </div>
 <script src="{{asset('admin/layui/layui.js')}}" type="text/javascript" charset="utf-8"></script>
 <script src="{{asset('admin/js/common.js')}}" type="text/javascript" charset="utf-8"></script>
+<script>
+    layui.use(['form','jquery', 'laydate', 'layer'], function() {
+        var form = layui.form(),
+            layer = layui.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate;
+
+        form.render();
+
+        $('#ctime').click(function () {
+            laydate({
+                elem: $('#ctime')[0],
+                format: 'YYYY-MM-DD',
+                max: laydate.now(),
+            });
+        })
+
+        $('#etime').click(function () {
+            laydate({
+                elem: $('#etime')[0],
+                format: 'YYYY-MM-DD',
+                max: laydate.now(+1),
+            });
+        })
+    })
+</script>
 </body>
 
 </html>

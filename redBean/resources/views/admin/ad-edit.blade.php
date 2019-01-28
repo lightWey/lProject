@@ -57,8 +57,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">状态：</label>
             <div class="layui-input-block">
-                <input type="radio" @if ($ad->type == 1) checked @endif name="status" value="1" title="上线" checked>
-                <input type="radio" @if ($ad->type == 0) checked @endif name="status" value="0" title="下线">
+                <input type="radio" @if ($ad->status == 1) checked @endif name="status" value="1" title="上线">
+                <input type="radio" @if ($ad->status == 0) checked @endif name="status" value="0" title="下线">
             </div>
 
         </div>

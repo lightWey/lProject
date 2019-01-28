@@ -41,6 +41,7 @@ class AdStatController extends Controller
         } else {
             $ad->where('created_at', '<=', date('Y-m-d H:i:s'));
         }
+        $ad->orderBy('created_at', 'desc');
         $stats = $ad->paginate(15);
         $stats = $stats->appends($request->all());
         return view('admin.adStatList')->with('stats', $stats)->with('type', $this->type);
