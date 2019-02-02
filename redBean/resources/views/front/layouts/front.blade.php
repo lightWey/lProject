@@ -24,8 +24,12 @@
             <a href="/media" @if ($flag == 'media') class="color" @endif>媒体变现</a>
             <a href="javascript:alert('请联系管理员索取')">文档中心</a>
             <a href="/about" @if ($flag == 'about') class="color" @endif>关于我们</a>
-            <a href="/user-login">登陆</a>
-            <a href="/register">注册</a>
+            @if (request()->user())
+                <a href="/admin/home">{{ request()->user()->name }}</a>
+            @else
+                <a href="/user-login">登陆</a>
+                <a href="/register">注册</a>
+            @endif
         </nav>
     </div>
 </header>
