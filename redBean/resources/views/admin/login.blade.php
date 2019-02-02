@@ -80,6 +80,7 @@
                     console.log(data);
                 },
                 error: function (res) {
+                    $('.verifyImg').click();
                     if (res.responseJSON) {
                         layer.msg(Object.values(res.responseJSON.errors)[0][0]);
                     } else {
