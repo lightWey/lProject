@@ -14,6 +14,7 @@
         <h3>@if (request()->route()->getName() == 'login') 管理员 @else 用户@endif后台系统登录</h3>
         <div class="m-login-warp">
             <form class="layui-form" method="POST" name="login">
+                <input type="hidden" name="url" value="{{ request()->route()->getName()}}">
                 <div class="layui-form-item">
                     <input type="text" name="email" required lay-verify="required" placeholder="邮箱" autocomplete="off" class="layui-input">
                 </div>
@@ -80,8 +81,8 @@
                     console.log(data);
                 },
                 error: function (res) {
-                    $('.verifyImg').click();
                     if (res.responseJSON) {
+                        $('.verifyImg').click();
                         layer.msg(Object.values(res.responseJSON.errors)[0][0]);
                     } else {
                         $(location).attr('href', "{{ route('home') }}");
