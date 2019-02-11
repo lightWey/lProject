@@ -97,8 +97,8 @@ class AdController extends Controller
         $user = $request->user();
 
 
-        $ctime = date('Y-m-d', strtotime('-1 day'));
-        $etime = date('Y-m-d');
+        $ctime = date('Y-m-d');
+        $etime = date('Y-m-d',strtotime('+1 day'));
 
         if ($request->input('ctime')) {
             $ctime = $request->input('ctime');
