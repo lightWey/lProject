@@ -88,9 +88,9 @@ class AdSchemaController extends Controller
             return ['msg' => '失败'];
         }
 
-        if ($data['random'] == 1) {
-            $data['total'] = (strtotime($data['etime']) - strtotime($data['ctime'])) * $data['total'];
-        }
+//        if ($data['random'] == 1) {
+////            $data['total'] = (strtotime($data['etime']) - strtotime($data['ctime'])) * $data['total'];
+////        }
 
         $config = new AdSchema(array_filter($data));
         $config->save();
