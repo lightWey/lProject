@@ -128,6 +128,7 @@ class AdController extends Controller
         }, 'stat as cons_sum'=>function (Builder $query) use ($ctime, $etime) {
             $query
                 ->select(DB::raw("sum(cons)"))
+                ->where(DB::raw("`ads`.`type`"), DB::raw("`ad_stats`.`type`"))
                 ->whereBetween('created_at', [$ctime, $etime]);
         }]);
         if ($user->type == 0) {
