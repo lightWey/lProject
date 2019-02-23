@@ -26,8 +26,8 @@
       <file leaf-file-name="AdController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="131" column="50" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
+            <state relative-caret-position="249">
+              <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -378,7 +378,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="reope&#9;ACTION&#9;$LRU&#10;reopen&#9;ACTION&#9;$LRU&#10;open rec&#9;ACTION&#9;$LRU&#10;reopen &#9;ACTION&#9;$LRU&#10;reop&#9;ACTION&#9;$LRU" />
+    <property name="SearchEverywhereHistoryKey" value="reopen&#9;ACTION&#9;$LRU&#10;reope&#9;ACTION&#9;$LRU&#10;open rec&#9;ACTION&#9;$LRU&#10;reopen &#9;ACTION&#9;$LRU&#10;reop&#9;ACTION&#9;$LRU" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -441,12 +441,12 @@
       <workItem from="1549792714102" duration="10000" />
       <workItem from="1549890519874" duration="476000" />
       <workItem from="1550024255136" duration="298000" />
-      <workItem from="1550290262802" duration="2051000" />
+      <workItem from="1550290262802" duration="2730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184150000" />
+    <option name="totallyTimeSpent" value="184829000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -458,10 +458,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16576965" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12329864" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32981133" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005353" side_tool="true" weight="0.32723576" />
@@ -470,7 +469,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" weight="0.41614908" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" visible="true" weight="0.30316743" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -841,8 +840,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="131" column="50" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
+        <state relative-caret-position="249">
+          <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
         </state>
       </provider>
     </entry>
