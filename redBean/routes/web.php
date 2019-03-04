@@ -23,6 +23,7 @@ Route::get('/admin/home', 'Common\IndexController@index')->middleware('auth')->n
 Route::namespace('Common')->name('admin.')->group(function () {
     Route::get('/index', 'IndexController@index');
     Route::get('/welcome', 'IndexController@welcome')->name('welcome');
+    Route::get('/test', 'IndexController@test');
     Route::post('/{user}/password/reset', 'IndexController@resetPassword')->name('password.reset');
     Route::get('/exit', 'IndexController@exit')->name('exit');
 });

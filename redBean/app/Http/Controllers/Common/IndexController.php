@@ -12,10 +12,10 @@ use App\Ad;
 use App\Http\Controllers\Controller;
 use App\Recharge;
 use App\User;
-use function GuzzleHttp\Psr7\str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
@@ -215,5 +215,13 @@ class IndexController extends Controller
             'cons' => $ad->once
         ]);
         return redirect($ad->url, 302);
+    }
+
+    public function test()
+    {
+//        var_dump(Redis::lpush('test2', 3));
+//        var_dump(Redis::lrange('test2',0,100));
+//        var_dump(Redis::del('test2'));
+        var_dump(Redis::exists('test2'));
     }
 }

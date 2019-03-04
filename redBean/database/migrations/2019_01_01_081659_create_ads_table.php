@@ -19,11 +19,9 @@ class CreateAdsTable extends Migration
             $table->tinyInteger('status')->unsigned()->default(1);
             $table->tinyInteger('type')->unsigned()->default(1);
             $table->unsignedDecimal('once',10,4);
-            $table->integer('used')->unsigned()->default(0);
             $table->string('url')->nullable(true);
             $table->string('name');
             $table->string('remark')->nullable(true);
-
             $table->timestamps();
         });
     }

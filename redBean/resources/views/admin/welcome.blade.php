@@ -264,7 +264,7 @@
                                 data: [{{ implode($data->ad, ',') }}]
                             },
                             {
-                                name: "评论",
+                                name: "充值",
                                 type: "line",
                                 smooth: true,
                                 itemStyle: {

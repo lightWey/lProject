@@ -78,19 +78,11 @@ class AdSchemaController extends Controller
             return ['msg' => '结束时间不能小于开始时间'];
         }
 
-//        if ($data['total'] >= 20000) {
-//            return ['msg' => '单次任务最大数量请不要超过2w'];
-//        }
-
         $ad = Ad::find($data['ad_id']);
 
         if (!$ad) {
             return ['msg' => '失败'];
         }
-
-//        if ($data['random'] == 1) {
-////            $data['total'] = (strtotime($data['etime']) - strtotime($data['ctime'])) * $data['total'];
-////        }
 
         $config = new AdSchema(array_filter($data));
         $config->save();

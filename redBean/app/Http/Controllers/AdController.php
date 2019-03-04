@@ -95,42 +95,9 @@ class AdController extends Controller
     public function stat(Request $request)
     {
         $user = $request->user();
-
-
-        $ctime = date('Y-m-d');
-        $etime = date('Y-m-d',strtotime('+1 day'));
-
-        if ($request->input('ctime')) {
-            $ctime = $request->input('ctime');
-        }
-
-        if ($request->input('etime')) {
-            $etime = $request->input('etime');
-        }
-        if ($ctime > date('Y-m-d')) {
-            $ctime = date('Y-m-d', strtotime('-1 day'));
-        }
-
-        if ($etime > date('Y-m-d')) {
-            $etime = date('Y-m-d H:i:s');
-        }
-
         $ad = Ad::whereHas('user', function (Builder $query) {
             $query->where('type', 0);
-        })->with('user')->withCount(['stat as show'=>function (Builder $query) use ($ctime, $etime) {
-            $query
-                ->whereBetween('created_at', [$ctime, $etime])
-                ->where('type', 1);
-        }, 'stat as click'=>function (Builder $query) use ($ctime, $etime) {
-            $query
-                ->whereBetween('created_at', [$ctime, $etime])
-                ->where('type', 2);
-        }, 'stat as cons_sum'=>function (Builder $query) use ($ctime, $etime) {
-            $query
-                ->select(DB::raw("sum(cons)"))
-                ->where(DB::raw("`ads`.`type`"), DB::raw("`ad_stats`.`type`"))
-                ->whereBetween('created_at', [$ctime, $etime]);
-        }]);
+        })->with('user');
         if ($user->type == 0) {
             $ad->where('user_id',$user->id);
         }

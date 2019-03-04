@@ -17,12 +17,6 @@
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <input type="text" autocomplete="off" name="ctime" class="layui-input"  value="{{ request()->input('ctime') }}" id="ctime" placeholder="开始时间">
-                </div>
-                <div class="layui-inline">
-                    <input type="text" autocomplete="off" name="etime" id="etime" value="{{ request()->input('etime') }}"  placeholder="结束时间" autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-inline">
                     <select name="user">
                         <option value=""></option>
                         @foreach ($users as $user)
@@ -71,9 +65,9 @@
                     <td class="hidden-xs">{{ $ad->name }}</td>
                     <td class="hidden-xs">{{ $ad->user->name }}</td>
                     <td class="hidden-xs">{{ $type[$ad->type] }}</td>
-                    <td class="hidden-xs"><a href="{{ route('admin.ad.stat', ['id'=>$ad->id, 'type'=>1]) }}">{{ $ad->show }}</a></td>
-                    <td class="hidden-xs"><a href="{{ route('admin.ad.stat', ['id'=>$ad->id, 'type'=>2]) }}">{{ $ad->click }}</a></td>
-                    <td class="hidden-xs">{{ isset($ad->cons_sum) ? $ad->cons_sum : 0 }} 元</td>
+                    <td class="hidden-xs">{{ $ad->show }}</td>
+                    <td class="hidden-xs">{{ $ad->click }}</td>
+                    <td class="hidden-xs">{{ isset($ad->used) ? $ad->used : 0 }} 元</td>
                     <td>
                         @if ($ad->status)
                             <button class="layui-btn layui-btn-mini layui-btn-normal">正常</button>
