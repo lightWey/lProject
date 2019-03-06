@@ -145,6 +145,9 @@ class IndexController extends Controller
 
     public function welcome()
     {
+        if (Auth::user()->type == 0) {
+            return view('welcome');
+        }
         $data = new \stdClass();
         $today = strtotime('today');
         $times = [$today];

@@ -146,7 +146,7 @@
                 </div>
             </div>
             <!--联系-->
-            <div class="panel panel-default contact-panel">
+            <div class="panel panel-default contact-panel layui-hide">
                 <div class="panel-header">联系我们</div>
                 <div class="panel-body">
                     <p>QQ：243065761</p>
