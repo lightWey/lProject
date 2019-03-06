@@ -20,7 +20,19 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('front.about')->with('flag','about')->with('customers', ContentConfig::all());
+        $customers = ContentConfig::all();
+        $coder = $ader = null;
+
+        foreach ($customers as $customer) {
+            if (!isset($coder) && $customer->type == 0) {
+                $coder = $customer;
+            }
+            if (!isset($ader) && $customer->type == 1) {
+                $ader = $customer;
+            }
+        }
+
+        return view('front.about')->with('flag','about')->with('customers', $customers)->with('coder', $coder)->with('ader', $ader);
     }
 
     public function privacy()

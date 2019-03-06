@@ -73,11 +73,11 @@ class IndexController extends Controller
                         'url' => route('admin.ad.stat.group'),
                         'id' => 11,
                     ],
-                    [
-                        'name' => '数据详情',
-                        'url' => route('admin.ad.stat'),
-                        'id' => 12,
-                    ]
+//                    [
+//                        'name' => '数据详情',
+//                        'url' => route('admin.ad.stat'),
+//                        'id' => 12,
+//                    ]
                 ]
             ]
         ];
