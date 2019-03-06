@@ -15,7 +15,7 @@ class TestUserSeeder extends Seeder
         DB::table('configs')->insert([
             'name' => '红豆科技',
             'url' => 'hongdoo.cn',
-            'avatar' => 'images/m88xRxJpYkzHknRF15iuM60qEWYJYso3r6ndFwcf.png',
+            'avatar' => 'images/logo.png',
             'filing' => '测试啦啦',
             'copyright' => '红豆科技@2018',
             'seo_title' => '红豆科技',

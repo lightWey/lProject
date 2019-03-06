@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Config;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ConfigController extends Controller
