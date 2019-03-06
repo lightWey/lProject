@@ -7,6 +7,7 @@ use App\AdSchema;
 use App\AdStat;
 use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class AdSchemaController extends Controller
 {
@@ -84,8 +85,43 @@ class AdSchemaController extends Controller
             return ['msg' => '失败'];
         }
 
-        $config = new AdSchema(array_filter($data));
-        $config->save();
+        $adSchema = new AdSchema(array_filter($data));
+        $adSchema->save();
+
+        /**
+         * 调度管理，预先处理数据
+         */
+        $key ='sch_'.$adSchema->id.'_'.$adSchema->ad_id.'_'.$adSchema->random.'_'
+            .$adSchema->ad->once.'_'.strtotime($adSchema->ctime).'_1';
+
+        $sctime = strtotime($adSchema->ctime);
+        $setime = strtotime($adSchema->etime);
+        $cha = ceil(($setime - $sctime)/60); //差值(分)
+        if ($adSchema->random == 1) {
+            $int = ceil($adSchema->total / $cha);
+
+            $data = array_fill(0,$cha,$int);
+        } else {
+            $data = array_fill(0,$cha+1,0);
+
+            $test = 0;
+            while (true) {
+                if ($test >= $adSchema->total) {
+                    break;
+                }
+
+                $index = mt_rand(0, $cha);
+
+                $data[$index] += 1;
+                $test+=1;
+            }
+        }
+
+        if (Redis::exists($key)) {
+            Redis::del($key);
+        }
+        Redis::lpush($key, $data);
+
         return ['msg'=>'成功'];
     }
 

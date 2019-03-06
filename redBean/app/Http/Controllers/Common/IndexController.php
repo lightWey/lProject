@@ -9,11 +9,13 @@
 namespace App\Http\Controllers\Common;
 
 use App\Ad;
+use App\AdSchema;
 use App\Http\Controllers\Controller;
 use App\Recharge;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
@@ -219,9 +221,47 @@ class IndexController extends Controller
 
     public function test()
     {
-//        var_dump(Redis::lpush('test2', 3));
-//        var_dump(Redis::lrange('test2',0,100));
-//        var_dump(Redis::del('test2'));
-        var_dump(Redis::exists('test2'));
+        print_r(Redis::keys('sch_*'));
+        //dd(Redis::del('sch_5_12_1_0.0200_1551795610'));
+        dd(Redis::lrange('sch_7_10_1_0.2000_1551797284',0,1000));
+    }
+
+    public function test2()
+    {
+        $adSchema = AdSchema::find(7);
+
+        /**
+         * 调度管理，预先处理数据
+         */
+        $key ='sch_'.$adSchema->id.'_'.$adSchema->ad_id.'_'.$adSchema->random.'_'
+            .$adSchema->ad->once.'_'.strtotime($adSchema->ctime).'_1';
+
+        $sctime = strtotime($adSchema->ctime);
+        $setime = strtotime($adSchema->etime);
+        $cha = ceil(($setime - $sctime)/60); //差值(分)
+        if ($adSchema->random == 1) {
+            $int = ceil($adSchema->total / $cha);
+
+            $data = array_fill(0,$cha,$int);
+        } else {
+            $data = array_fill(0,$cha+1,0);
+
+            $test = 0;
+            while (true) {
+                if ($test >= $adSchema->total) {
+                    break;
+                }
+
+                $index = mt_rand(0, $cha);
+
+                $data[$index] += 1;
+                $test+=1;
+            }
+        }
+
+        if (Redis::exists($key)) {
+            Redis::del($key);
+        }
+        Redis::lpush($key, $data);
     }
 }
