@@ -81,6 +81,7 @@ class RegisterController extends Controller
         $userInfo = new UserInfo();
         $userInfo->coin = 0;
         $userInfo->name = $data['name'];
+        $userInfo->qq = empty($data['qq']) ? '' : $data['qq'];
         $user->info()->save($userInfo);
         return $user;
     }

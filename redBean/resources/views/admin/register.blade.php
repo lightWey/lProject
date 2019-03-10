@@ -21,6 +21,9 @@
                     <input type="text" name="email" required lay-verify="required" placeholder="邮箱" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-item">
+                    <input type="text" name="qq" required lay-verify="required" placeholder="QQ号码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
                     <input type="password" name="password" required lay-verify="password" placeholder="密码" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-item">
