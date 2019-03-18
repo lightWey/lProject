@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -77,6 +77,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type'=>0,
+            'status' => 0
         ]);
         $userInfo = new UserInfo();
         $userInfo->coin = 0;
@@ -90,7 +91,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        $this->guard()->login($user);
+        //$this->guard()->login($user);
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());

@@ -87,7 +87,8 @@
                     if (res.responseJSON) {
                         layer.msg(Object.values(res.responseJSON.errors)[0][0]);
                     } else {
-                        $(location).attr('href', "{{ route('home') }}");
+                        alert('注册成功，审核中...请耐心等待！');
+                        $(location).attr('href', "/");
                     }
                 }
             });

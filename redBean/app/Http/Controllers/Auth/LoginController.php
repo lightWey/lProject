@@ -52,6 +52,7 @@ class LoginController extends Controller
                 'required',
                 'string',
                 Rule::exists('users')->where(function ($query) use($request) {
+                    $query->where('status',1);
                     if ($request->input('url') == 'login') {
                         $query->where('type', '<>', 0);
                     } else {
