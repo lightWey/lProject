@@ -14,7 +14,7 @@ class AddClickShowUsed extends Migration
     public function up()
     {
         Schema::table('ads', function (Blueprint $table) {
-            $table->unsignedDecimal('used', 12, 4);
+            $table->unsignedDecimal('used', 12, 4)->default(0);
             $table->unsignedInteger('show')->default(0);
             $table->unsignedInteger('click')->default(0);
         });
