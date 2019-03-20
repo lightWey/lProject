@@ -76,11 +76,15 @@ class Kernel extends ConsoleKernel
                             $adSchema = AdSchema::with('ad.user')->find($ex[1]);
                             $adSchema->status = 3;
                             $adSchema->save();
+                            $amount = 0 - ($ex[4] * $adSchema->total);
                             $adSchema->ad->user->recharge()->create([
                                 'admin' => 1,
                                 'type' => 2,
-                                'amount'=> 0 - ($ex[4] * $adSchema->total)
+                                'amount'=> $amount
                             ]);
+                            $coin = $adSchema->ad->user->info->coin;
+                            $adSchema->ad->user->info->coin = $coin + $amount;
+                            $adSchema->ad->user->info->save();
                             Redis::del($schema);
                         }
 
