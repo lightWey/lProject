@@ -91,7 +91,7 @@ class AdSchemaController extends Controller
         /**
          * 调度管理，预先处理数据
          */
-        $key ='sch_'.$adSchema->id.'_'.$adSchema->ad_id.'_'.$adSchema->random.'_'
+        $key ='sch_'.$adSchema->id.'_'.$adSchema->ad_id.'_'.$adSchema->type.'_'
             .$adSchema->ad->once.'_'.strtotime($adSchema->ctime).'_1';
 
         $sctime = strtotime($adSchema->ctime);

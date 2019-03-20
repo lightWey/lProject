@@ -66,7 +66,10 @@ class Kernel extends ConsoleKernel
                         if ($ex[3] == 2) {
                             $ad->click += $key;
                         }
-                        $ad->used += $ex[4] * $key;
+
+                        if ($ex[3] == $ad->type) {
+                            $ad->used += $ex[4] * $key;
+                        }
                         $ad->save();
 
                         if (empty(Redis::exists($schema))) {
