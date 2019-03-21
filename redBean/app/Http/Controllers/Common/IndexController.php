@@ -213,12 +213,14 @@ class IndexController extends Controller
 
     public function url(Ad $ad, Request $request)
     {
-        $ad->stat()->create([
-            'type' => 2,
-            'referer' => $request->server->get('HTTP_REFERER') ?: '',
-            'ip' => $request->getClientIp(),
-            'cons' => $ad->once
-        ]);
+        $num = 1;
+        $ad->click +=$num;
+        if ($ad->type == 2) {
+            $ad->used = $num * $ad->once;
+            $ad->user->info->coin -= $ad->once;
+            $ad->user->info->save();
+        }
+        $ad->save();
         return redirect($ad->url, 302);
     }
 

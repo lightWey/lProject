@@ -68,7 +68,10 @@ class Kernel extends ConsoleKernel
                         }
 
                         if ($ex[3] == $ad->type) {
-                            $ad->used += $ex[4] * $key;
+                            $num = $ex[4] * $key;
+                            $ad->used += $num;
+                            $ad->user->info->coin -= $num;
+                            $ad->user->info->save();
                         }
                         $ad->save();
 
@@ -76,16 +79,15 @@ class Kernel extends ConsoleKernel
                             $adSchema = AdSchema::with('ad.user')->find($ex[1]);
                             $adSchema->status = 3;
                             $adSchema->save();
-                            $amount = 0 - ($ex[4] * $adSchema->total);
-                            $adSchema->ad->user->recharge()->create([
-                                'admin' => 1,
-                                'type' => 2,
-                                'amount'=> $amount
-                            ]);
-                            $coin = $adSchema->ad->user->info->coin;
-                            $adSchema->ad->user->info->coin = $coin + $amount;
-                            $adSchema->ad->user->info->save();
-                            Redis::del($schema);
+//                            $amount = 0 - ($ex[4] * $adSchema->total);
+//                            $adSchema->ad->user->recharge()->create([
+//                                'admin' => 1,
+//                                'type' => 2,
+//                                'amount'=> $amount
+//                            ]);
+//                            $coin = $adSchema->ad->user->info->coin;
+//                            $adSchema->ad->user->info->coin = $coin + $amount;
+//                            $adSchema->ad->user->info->save();
                         }
 
                     }
