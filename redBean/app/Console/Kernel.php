@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
 //         $schedule->command('inspire')
 //                  ->hourly();
         $schedule->call(function () {
-            $all = User::withCount(['ad as ad_used' => function ($query) {
+            $all = User::where('type', 0)->withCount(['ad as ad_used' => function ($query) {
                 $query->select(DB::raw("sum(used) as ad_sum"));
             }, 'ad as ad_click' => function ($query) {
                 $query->select(DB::raw("sum(click) as ad_click"));
@@ -44,6 +44,10 @@ class Kernel extends ConsoleKernel
 
             $yesterday =  strtotime('yesterday');
             $day = strtotime('today');
+
+            if (empty($all)) {
+                return false;
+            }
 
             foreach ($all as $v) {
                 $consume = Consume::where('user_id', $v->id)->where('day', $yesterday)->first();
