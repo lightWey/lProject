@@ -5,6 +5,8 @@ namespace App\Console;
 use App\Ad;
 use App\AdSchema;
 use App\AdStat;
+use App\Consume;
+use App\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +33,36 @@ class Kernel extends ConsoleKernel
     {
 //         $schedule->command('inspire')
 //                  ->hourly();
+        $schedule->call(function () {
+            $all = User::withCount(['ad as ad_used' => function ($query) {
+                $query->select(DB::raw("sum(used) as ad_sum"));
+            }, 'ad as ad_click' => function ($query) {
+                $query->select(DB::raw("sum(click) as ad_click"));
+            }, 'ad as ad_show' => function ($query) {
+                $query->select(DB::raw("sum(`show`) as `ad_show`"));
+            }])->get();
 
+            $yesterday =  strtotime('yesterday');
+            $day = strtotime('today');
+
+            foreach ($all as $v) {
+                $consume = Consume::where('user_id', $v->id)->where('day', $yesterday)->first();
+
+                $click = $show = $count = 0;
+                if ($consume) {
+                    $click = $consume->click;
+                    $show = $consume->show;
+                    $count =$consume->count;
+                }
+                Consume::create([
+                    'day' => $day,
+                    'user_id' => $v->id,
+                    'show' => $v->ad_show - $show,
+                    'click' => $v->ad_click - $click,
+                    'count' => $v->ad_used - $count
+                ]);
+            }
+        })->daily();
 
         $schedule->call(function () {
             $schemas = Redis::keys('sch_*');
