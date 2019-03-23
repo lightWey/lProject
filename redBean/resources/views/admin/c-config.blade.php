@@ -51,7 +51,7 @@
                     <td>
                         <div class="layui-inline">
                             <button class="layui-btn layui-btn-small layui-btn-normal go-btn" data-url="{{ route('admin.c-config.show', ['id'=>$config->id]) }}"><i class="layui-icon">&#xe642;</i></button>
-                            <button class="layui-btn layui-btn-small layui-btn-danger real-del-btn" data-id="{{ $config->id }}" data-url="{{ route('admin.c-config.destroy', 1) }}" data-csrf="{{ csrf_token() }}"><i class="layui-icon">&#xe640;</i></button>
+                            <button class="layui-btn layui-btn-small layui-btn-danger real-del-btn" data-id="{{ $config->id }}" data-url="{{ route('admin.c-config.destroy', $config->id) }}" data-csrf="{{ csrf_token() }}"><i class="layui-icon">&#xe640;</i></button>
                         </div>
                     </td>
                 </tr>
