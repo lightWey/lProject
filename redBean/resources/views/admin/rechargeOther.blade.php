@@ -41,8 +41,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $recharge->user->name }}</td>
                     <td>{{ $recharge->user->id }}</td>
-                    <td>{{ $recharge->amount }}</td>
-                    <td>{{ $recharge->created_at }}</td>
+                    <td>{{ $recharge->count }}</td>
+                    <td>{{ date('Y-m-d',$recharge->day) }}</td>
                 </tr>
                 @endforeach
                 </tbody>

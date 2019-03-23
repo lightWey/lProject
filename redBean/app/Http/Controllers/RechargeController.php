@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Consume;
 use App\Recharge;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,15 +33,15 @@ class RechargeController extends Controller
 
     public function indexOther(Request $request)
     {
-        $recharges = Recharge::with(['user','adminUser']);
-        $recharges->where('type', 2);
-        if (empty($request->user()->type)) {
-            $recharges->where('user_id',$request->user()->id);
+        $consume = Consume::with('user')->where('count', '>', 0);
+
+        if ($request->user()->type == 0) {
+            $consume->where('user_id', $request->user()->id);
         }
 
-        $recharges = $recharges->paginate(15);
+        $consumes = $consume->paginate(15);
 
-        return view('admin.rechargeOther')->with('recharges', $recharges)->with('type', $this->type);
+        return view('admin.rechargeOther')->with('recharges', $consumes)->with('type', $this->type);
     }
 
     /**
