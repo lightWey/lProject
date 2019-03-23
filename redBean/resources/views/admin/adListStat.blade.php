@@ -6,7 +6,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>网站后台管理模版</title>
+    <title>红豆后台</title>
     <link rel="stylesheet" type="text/css" href="{{asset('admin/layui/css/layui.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/admin.css')}}" />
 </head>
@@ -15,6 +15,7 @@
 <div class="wrap-container clearfix">
     <div class="column-content-detail">
         <form class="layui-form" action="">
+            @if (Request::user()->type)
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <select name="user">
@@ -26,6 +27,7 @@
                 </div>
                 <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
             </div>
+            @endif
         </form>
         <div class="layui-form" id="table-list">
             <table class="layui-table" lay-even lay-skin="nob">

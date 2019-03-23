@@ -4,7 +4,6 @@ namespace App\Console;
 
 use App\Ad;
 use App\AdSchema;
-use App\AdStat;
 use App\Consume;
 use App\User;
 use Illuminate\Console\Scheduling\Schedule;
