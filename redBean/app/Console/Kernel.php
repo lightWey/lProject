@@ -73,12 +73,9 @@ class Kernel extends ConsoleKernel
                 return false;
             }
 
-            //sch_调度id_广告id_类型_价格_开始时间
             foreach ($schemas as $schema) {
                 $ex = explode('_', $schema);
-
                 if ($ex[5] <= time()) {
-                    // 调度中。。。 的逻辑
                     if (isset($ex[6])) {
                         unset($ex[6]);
                         $oldSchema = $schema;
@@ -88,11 +85,23 @@ class Kernel extends ConsoleKernel
                         $adSchema->status = 2;
                         $adSchema->save();
                     }
+                }
+            }
+        });
 
+        $schedule->call(function () {
+            $schemas = Redis::keys('sch_*');
+            if (empty($schemas)) {
+                return false;
+            }
+            //sch_调度id_广告id_类型_价格_开始时间
+            foreach ($schemas as $schema) {
+                $ex = explode('_', $schema);
+
+                if (count($ex) == 6 && $ex[5] <= time()) {
                     $key = Redis::rpop($schema);
                     if ($key) {
                         $ad = Ad::find($ex[2]);
-
                         if ($ex[3] == 1) {
                             $ad->show += $key;
                         }
@@ -108,11 +117,12 @@ class Kernel extends ConsoleKernel
                             $ad->user->info->save();
                         }
                         $ad->save();
+                    }
 
-                        if (empty(Redis::exists($schema))) {
-                            $adSchema = AdSchema::with('ad.user')->find($ex[1]);
-                            $adSchema->status = 3;
-                            $adSchema->save();
+                    if (!Redis::exists($schema)) {
+                        $adSchema = AdSchema::find($ex[1]);
+                        $adSchema->status = 3;
+                        $adSchema->save();
 //                            $amount = 0 - ($ex[4] * $adSchema->total);
 //                            $adSchema->ad->user->recharge()->create([
 //                                'admin' => 1,
@@ -122,10 +132,7 @@ class Kernel extends ConsoleKernel
 //                            $coin = $adSchema->ad->user->info->coin;
 //                            $adSchema->ad->user->info->coin = $coin + $amount;
 //                            $adSchema->ad->user->info->save();
-                        }
-
                     }
-
                 }
             }
 

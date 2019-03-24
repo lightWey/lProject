@@ -20,7 +20,7 @@ class CreateUserInfosTable extends Migration
             $table->string('wechat')->nullable(true)->unique();
             $table->string('remark')->nullable(true);
             $table->string('name');
-            $table->unsignedDecimal('coin',12,4)->default(0);
+            $table->decimal('coin',12,4)->default(0);
             $table->timestamps();
         });
     }
